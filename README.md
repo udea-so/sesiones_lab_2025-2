@@ -1,10 +1,10 @@
-<table border=0 class="inlineTable" width="100%">
+<table border="0" width="100%" style="border-collapse: collapse; border: none;">
     <tr>
-        <td>
+        <td style="border: none;">
             <h1>Universidad de Antioquia</h1>
             <h2>Laboratorio de Sistemas Operativos</h2>
         </td>
-        <td>
+        <td style="border: none;">
             <img src="udea_escudo.svg" style="height:30%;" >
         </td>
     </tr>
