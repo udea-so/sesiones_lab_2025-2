@@ -1,38 +1,65 @@
 # Sesión 0 - Presentacion del laboratorio
 
-**Fecha**: 
+**Fecha**: 22/08/2025
 
 ## 1. Sondeo
 
-Este sondeo se realizo entre los estudiantes de la modalidad virtual
+Sondeo diagnostico realizado entre los estudiantes de la modalidad virtual:
 
-|#|Pregunta|Si|No|Total|
-|---|---|---|---|---|
-|1|¿Ha trabajado antes con un Linux o un SO diferente de Windows?|13|8|21|
-|2|¿Ha trabajado con la terminal (no importa el sistema operativo)?|19|2|21|
-|3|¿Ha trabajado con el lenguaje C o C++?|0|21|21|
-|4|¿Tiene alguna distribución de linux en la máquina en la que hace los trabajos de la universidad?|7|13|21|
+### Pregunta 1 - Sistema operativo instalado
+
+<p align="center">
+    <img src="images/encuesta/so_instalado.png" alt="im">
+</p>
+
+
+> :warning: **Warning:** Do not push the big red button.
+
+### Pregunta 2 - Manejo de linea de comandos
+
+<p align="center">
+    <img src="images/encuesta/linux.png" alt="im">
+</p>
+
+### Pregunta 3 - Experiencia previa con el lenguaje C
+
+<p align="center">
+    <img src="images/encuesta/lenguaje_c.png" alt="im">
+</p>
 
 ## 2. Herramientas necesarias
 
-![herramientas](images/herramientas.png)
-
 La siguiente lista muestra las herramientas que se van a emplear a lo largo del laboratorio:
 
-- [x] Cualquier distribución de Linux (Ubuntu, WSL,...) [[link]](https://udea-so.github.io/udea-so/docs/laboratorio/tutoriales/herramientas/linux/)
-- [x] Compilador gcc [[link]](https://udea-so.github.io/udea-so/docs/laboratorio/tutoriales/herramientas/gcc/)
-- [x] Git [[link]](https://learn.microsoft.com/es-es/training/modules/intro-to-git/)
-- [x] Github [[link]](https://learn.microsoft.com/es-es/training/modules/introduction-to-github/)
+<p align="center">
+    <img src="images/herramientas.png" alt="herramientas">
+</p>
+<p align="center"><em>Figura 1. Herramientas requeridas para el laboratorio</em></p>
+
+A continuación se lista las herramientas necesarias junto con algunos enlaces
+
+- [x] **Cualquier distribución de Linux** (Ubuntu, WSL,...) [[link]](https://udea-so.github.io/udea-so/docs/laboratorio/tutoriales/herramientas/linux/)
+- [x] **Compilador gcc** [[link]](https://udea-so.github.io/udea-so/docs/laboratorio/tutoriales/herramientas/gcc/)
+- [x] **Make** [[link 1]](https://makefiletutorial.com/) [[link 2]](https://github.com/vampy/Makefile)
+- [x] **Git** [[link]](https://learn.microsoft.com/es-es/training/modules/intro-to-git/)
+- [x] **Github** [[link]](https://learn.microsoft.com/es-es/training/modules/introduction-to-github/)
+- [ ] **GDB** [[link]](https://udea-so.github.io/udea-so/docs/laboratorio/tutoriales/herramientas/gdb)
+- [ ] **Valgrind** [[link]](https://udea-so.github.io/udea-so/docs/laboratorio/tutoriales/herramientas/valgrinds)
+
 
 ## 3. Lenguaje de programación
 
 El lenguaje C seré el empleado para el desarrollo de las practicas de laboratorio. A continuación, se muestran algunos recursos de utilidad:
 
 1. **Introducción al lenguaje C** (Apuntes de clase)  [[link]](https://udea-so.github.io/intro-c/intro.html)
-2. **C for Java Programmers** (Dive into Systems) [[link]](https://diveintosystems.org/book/Appendix1/index.html)
-3. **C for Python Programmers** (Real Python) [[link]](https://realpython.com/c-for-python-programmers/)
+2. **CS50’s Introduction to Computer Science** (Harvard) [[link]](https://cs50.harvard.edu/summer/2025/)
+3. **C for Java Programmers** (Dive into Systems) [[link]](https://diveintosystems.org/book/Appendix1/index.html)
+4. **C for Python Programmers** (Real Python) [[link]](https://realpython.com/c-for-python-programmers/)
+5. **Computer Organization & Systems** (Stanford) [[link]](https://web.stanford.edu/class/archive/cs/cs107/cs107.1258/) 
 
 ## 4. Recursos adicionales
+
+A continuación se muestran algunos links con recursos adicionales
 
 1. https://github.com/isLinXu/Stanford-CS-Course/blob/main/README.en.md
 2. https://www.mit.edu/~amidi/teaching/data-science-tools/
@@ -49,3 +76,7 @@ El lenguaje C seré el empleado para el desarrollo de las practicas de laborator
 13. https://web.stanford.edu/class/cs105/
 14. https://cs344-stanford.github.io/
 15. https://josejuansanchez.org/daw/
+16. https://cs50.harvard.edu/x/
+17. https://cs50.harvard.edu/ai/
+18. https://cs50.harvard.edu/cybersecurity/
+19. https://cs50.harvard.edu/python/
