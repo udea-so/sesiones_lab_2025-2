@@ -1,0 +1,4 @@
+nav:
+    - Linux básico: linux-basico.md
+    - Introducción al compilador gcc: intro-gcc.md
+    - Uso básico del git: intro-git.md
