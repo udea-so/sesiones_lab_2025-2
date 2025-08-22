@@ -40,8 +40,8 @@ Luego, para correr el ejecutable el comando será:
 #### Material de apoyo
 
 > 1. **Laboratory: Tutorial** 
-> 2. **An Introduction to GCC** (MIT) [[link]](../../../resources/ref-cards/gcc-intro/gccintro.pdf)
+> 2. **Una Introducción a GCC** (MIT) [[link]](https://www.nongnu.org/gccintro-es/gccintro.es.pdf)
 
 #### Reference sheet
 
-> **ECE 2400 Linux, Git, C/C++ Cheat Sheet** [[link]](../../../resources/ref-cards/linux-ref-cards/ece2400-cheat-sheet.pdf)
+> **ECE 2400 Linux, Git, C/C++ Cheat Sheet** [[link]](../summary/ece2400-cheat-sheet.pdf)

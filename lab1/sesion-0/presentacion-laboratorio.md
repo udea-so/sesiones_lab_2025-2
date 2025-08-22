@@ -83,3 +83,4 @@ A continuación se muestran algunos links con recursos adicionales
 17. https://cs50.harvard.edu/ai/
 18. https://cs50.harvard.edu/cybersecurity/
 19. https://cs50.harvard.edu/python/
+20. https://www.csl.cornell.edu/courses/ece2400/handouts.html

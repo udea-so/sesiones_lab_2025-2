@@ -34,8 +34,8 @@ También es bueno tener en cuenta que cuando se quiera navegar en consola, por m
 
 > 1. **Linux básico** (material del curso) [[link]](https://udea-so.github.io/udea-so/docs/laboratorio/tutoriales/herramientas/linux)
 > 2. **Working with Bash** (MIT) [[link]](https://www.mit.edu/~amidi/teaching/data-science-tools/study-guide/engineering-productivity-tips/#working-with-bash)
-> 3. **The Unix and GNU/Linux command line** (Free Electrons) [[link]](../../../resources/ref-cards/linux-ref-cards/unix_linux_introduction.pdf)
+> 3. **The Unix and GNU/Linux command line** (Free Electrons) [[link]](https://bootlin.com/doc/legacy/command-line/unix_linux_introduction.pdf)
 
 #### Reference sheet
 
-> **GNU/Linux most wanted** [[link]](../../../resources/ref-cards/linux-ref-cards/command_memento.pdf)
+> **GNU/Linux most wanted** [[link]](https://bootlin.com/doc/legacy/command-line/command_memento.pdf)
