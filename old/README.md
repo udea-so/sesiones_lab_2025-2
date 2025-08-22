@@ -1,4 +1,3 @@
-# 
 
 
 
@@ -16,4 +15,4 @@
 
 
 
-Repositorio con los códigos y guías del laboratorio de Sistemas Operativos - Universidad de Antioquia
+# Repositorio con los códigos y guías del laboratorio de Sistemas Operativos - Universidad de Antioquia
