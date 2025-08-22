@@ -2,15 +2,6 @@
 
 **Fecha**: 22/08/2025
 
-## Taso
-
-- [Sesión 0 - Presentacion del laboratorio](#sesión-0---presentacion-del-laboratorio)
-  - [Taso](#taso)
-  - [1. Sondeo](#1-sondeo)
-  - [2. Herramientas necesarias](#2-herramientas-necesarias)
-  - [3. Lenguaje de programación](#3-lenguaje-de-programación)
-  - [4. Recursos adicionales](#4-recursos-adicionales)
-
 ## 1. Sondeo
 
 Sondeo diagnostico realizado entre los estudiantes de la modalidad virtual:
