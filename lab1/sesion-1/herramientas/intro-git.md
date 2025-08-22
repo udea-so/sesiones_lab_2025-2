@@ -60,6 +60,8 @@ Para la práctica, no son muchos los conceptos de git que se necesitan, básicam
 </tbody>
 </table>
 
+> [!TIP] Para profundizar mas consulte la pagina **Tips with Git, Bash** ([link](https://www.mit.edu/~amidi/teaching/data-science-tools/study-guide/engineering-productivity-tips/))
+
 En el siguiente [link](https://rogerdudler.github.io/git-guide/index.es.html) se ilustra y explica muy bien lo más necesario.
 
 A continuación, se comparten algunos resúmenes que le pueden servir, el cacharreo va de cuenta suya:

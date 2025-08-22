@@ -30,10 +30,8 @@ Repositorio con material de las sesiones de laboratorio del semestre 2025/1
 
 |Sesión|Contenido|
 |---|---|
-|0|Presentación del laboratorio [[link]](./lab1/sesion-0/presentacion-laboratorio.md)|
-
-
-
+|0 | Presentación del laboratorio [[link]](./lab1/sesion-0/presentacion-laboratorio.md)|
+|1 | Primeros pasos: Herramientas de desarrollo [[link]](./lab1/sesion-1/sesion1.md)|
 
 #### Enunciado de la practica
 

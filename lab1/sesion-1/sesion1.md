@@ -1,14 +1,17 @@
 # Sesión 1 - Primeros pasos
 
-**Fecha**: 
+**Fecha**: 29/08/2025
 
 ## Introducción
 
 En esta sesión se van a conocer las principales herramientas de desarrollo que se emplearan en el laboratorio:
 
-1. Introducción a la consola de linux [[link]](herramientas/linux-basico.md).
-2. Manejo basico del compilador gcc [[link]](herramientas/intro-gcc.md).
-3. Manejo basico del git [[link]](herramientas/intro-git.md).
+1. **Introducción a la consola de linux** [[link]](herramientas/linux-basico.md).
+2. **Manejo basico del compilador gcc** [[link]](herramientas/intro-gcc.md).
+3. **Manejo basico del git** [[link]](herramientas/intro-git.md).
+
+
+> [!TIP] En el documento [**intro-to-os-c-primer**](intro-to-os-c-primer.pdf) se resume todo lo que se estudiara en esta sección
 
 ## Recursos disponibles
 

@@ -37,10 +37,21 @@ Luego, para correr el ejecutable el comando será:
 ./hola_mundo.out
 ```
 
+A continuación se muestran algunas configuraciones de compilación de gcc que pueden ser de utilidad aplicadas al ejemplo analizado:
+
+```
+gcc -o hola_mundo.out hola_mundo.c      # -o: para especificar el nombre del ejecutable
+gcc -Wall hola_mundo.c                  # -Wall: da advertencias mucho mejores
+gcc -g hola_mundo.c                     # -g: para habilitar la depuración con gdb
+gcc -O hola_mundo.c                     # -O: para activar la optimización
+```
+
+Es posible mezclar y combinar las banderas anteriormente mencionadas (ej., `gcc -o hola_mundo.out -g -Wall hola_mundo.c`). Para el caso, usar la bandera `-Wall` proporciona muchas más advertencias sobre posibles problemas. ¡Es importante no ignorar las advertencias!.
+
 #### Material de apoyo
 
-> 1. **Laboratory: Tutorial** 
-> 2. **Una Introducción a GCC** (MIT) [[link]](https://www.nongnu.org/gccintro-es/gccintro.es.pdf)
+> 1. **Laboratory: Tutorial**  [[link]](https://pages.cs.wisc.edu/~remzi/OSTEP/lab-tutorial.pdf)
+> 2. **Una Introducción a GCC** [[link]](https://www.nongnu.org/gccintro-es/gccintro.es.pdf)
 
 #### Reference sheet
 
