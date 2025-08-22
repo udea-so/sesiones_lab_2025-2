@@ -2,30 +2,42 @@
 
 **Fecha**: 22/08/2025
 
+## Taso
+
+- [Sesión 0 - Presentacion del laboratorio](#sesión-0---presentacion-del-laboratorio)
+  - [Taso](#taso)
+  - [1. Sondeo](#1-sondeo)
+  - [2. Herramientas necesarias](#2-herramientas-necesarias)
+  - [3. Lenguaje de programación](#3-lenguaje-de-programación)
+  - [4. Recursos adicionales](#4-recursos-adicionales)
+
 ## 1. Sondeo
 
 Sondeo diagnostico realizado entre los estudiantes de la modalidad virtual:
 
-### Pregunta 1 - Sistema operativo instalado
+**Pregunta 1 - Sistema operativo instalado**
 
 <p align="center">
     <img src="images/encuesta/so_instalado.png" alt="im">
 </p>
 
+> :warning: **Recomendación:** Si va a trabajar en Linux dentro de Windows la recomendación es que instale WSL2 ([link](https://learn.microsoft.com/es-es/windows/wsl/install)).
 
-> :warning: **Warning:** Do not push the big red button.
-
-### Pregunta 2 - Manejo de linea de comandos
+**Pregunta 2 - Manejo de linea de comandos**
 
 <p align="center">
     <img src="images/encuesta/linux.png" alt="im">
 </p>
 
-### Pregunta 3 - Experiencia previa con el lenguaje C
+> :warning: **Recomendación:** Si es la primera vez que va a usar la consola la recomendación es que para la proxima sección del laboratorio realice la primera unidad (gratuita) del curso **Introduction to shell** de Data Camp ([link](https://www.datacamp.com/courses/introduction-to-shell)).
+
+**Pregunta 3 - Experiencia previa con el lenguaje C**
 
 <p align="center">
     <img src="images/encuesta/lenguaje_c.png" alt="im">
 </p>
+
+> :tip: **Recomendación:** Esta primera parte se aprenderá con la primera practica de laboratorio.
 
 ## 2. Herramientas necesarias
 
