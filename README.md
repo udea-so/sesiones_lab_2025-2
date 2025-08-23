@@ -35,7 +35,7 @@ Repositorio con material de las sesiones de laboratorio del semestre 2025/1
 
 #### Enunciado de la practica
 
-El enunciado de la practica 1 se encuentra en el siguiente [link](https://github.com/udea-so/sesiones_lab_2025-2)
+El enunciado de la practica 1 se encuentra en el siguiente [link](https://github.com/udea-so/SO-Lab1-20252)
 
 ### Laboratorio 2 - Gestion de de procesos
 
