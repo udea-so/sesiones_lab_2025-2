@@ -1,3 +1,15 @@
+<table border="0" width="100%" style="border-collapse: collapse; border: none;">
+    <tr>
+        <td style="border: none;">
+            <h1>Universidad de Antioquia</h1>
+            <h2>Laboratorio de Sistemas Operativos</h2>
+        </td>
+        <td style="border: none;">
+            <img src="udea_escudo.svg" style="height:30%;" >
+        </td>
+    </tr>
+</table>
+
 # Repositorio con los códigos y guías del laboratorio de Sistemas Operativos - Universidad de Antioquia
 
 Repositorio con material de las sesiones de laboratorio del semestre 2025/1
