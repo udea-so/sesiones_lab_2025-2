@@ -11,7 +11,8 @@ En esta sesión se van a conocer las principales herramientas de desarrollo que 
 3. **Manejo basico del git** [[link]](herramientas/intro-git.md).
 
 
-> [!TIP] En el documento [**intro-to-os-c-primer**](intro-to-os-c-primer.pdf) se resume todo lo que se estudiara en esta sección
+> [!TIP] 
+> En el documento [**intro-to-os-c-primer**](intro-to-os-c-primer.pdf) se resume todo lo que se estudiara en esta sección
 
 ## Recursos disponibles
 
