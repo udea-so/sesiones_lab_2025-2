@@ -12,7 +12,8 @@ Sondeo diagnostico realizado entre los estudiantes de la modalidad virtual:
     <img src="images/encuesta/so_instalado.png" alt="im">
 </p>
 
-> [!WARNING] Si va a trabajar en Linux dentro de Windows la recomendación es que instale WSL2 ([link](https://learn.microsoft.com/es-es/windows/wsl/install)).
+> [!WARNING] 
+> Si va a trabajar en Linux dentro de Windows la recomendación es que instale WSL2 ([link](https://learn.microsoft.com/es-es/windows/wsl/install)).
 
 **Pregunta 2 - Manejo de linea de comandos**
 
@@ -20,7 +21,8 @@ Sondeo diagnostico realizado entre los estudiantes de la modalidad virtual:
     <img src="images/encuesta/linux.png" alt="im">
 </p>
 
-> [!WARNING] Si es la primera vez que va a usar la consola la recomendación es que para la proxima sección del laboratorio realice la primera unidad (gratuita) del curso **Introduction to shell** de Data Camp ([link](https://www.datacamp.com/courses/introduction-to-shell)).
+> [!WARNING] 
+> Si es la primera vez que va a usar la consola la recomendación es que para la proxima sección del laboratorio realice la primera unidad (gratuita) del curso **Introduction to shell** de Data Camp ([link](https://www.datacamp.com/courses/introduction-to-shell)).
 
 **Pregunta 3 - Experiencia previa con el lenguaje C**
 
@@ -28,7 +30,8 @@ Sondeo diagnostico realizado entre los estudiantes de la modalidad virtual:
     <img src="images/encuesta/lenguaje_c.png" alt="im">
 </p>
 
-> [!TIP] Esta primera parte se aprenderá con la primera practica de laboratorio.
+> [!IMPORTANT] 
+> Esta primera parte se aprenderá con la primera practica de laboratorio.
 
 ## 2. Herramientas necesarias
 
