@@ -22,8 +22,15 @@ A continuación se muestran una lista de apuntes de clase que le pueden servir p
 2. **Compilador gcc** [[link]](https://udea-so.github.io/udea-so/docs/laboratorio/tutoriales/herramientas/gcc/)
 3. **Introducción al lenguaje C** [[link]](https://udea-so.github.io/intro-c/intro.html)
 
+## Orden del dia
+
+### Linux básico
+
+
+
 ## Referencias
 
+* https://github.com/iovisor/bcc/#tools
 * https://www.mit.edu/~amidi/teaching/data-science-tools/tutorial/working-with-git/
 * https://bootlin.com/blog/command-line/
 * https://www.csl.cornell.edu/courses/ece2400/
