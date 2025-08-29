@@ -283,8 +283,6 @@ Luego, empleando el compilador `gcc` realice las siguientes actividades:
 4. Repita el procedimiento anterior, descomentando ahora el codigo asociado a la segunda demostración y comentando el codigo de la demostración 1. Genere un ejecutable de nombre `example2.out` y ejecutelo.
 5. Repita el procedimiento anterios para los demas ejemplos generando cada uno de los ejecutables con el respectivo nombre asociado al ejemplo.
 
-
-
 #### Material de apoyo
 
 > 1. **Laboratory: Tutorial**  [[link]](https://pages.cs.wisc.edu/~remzi/OSTEP/lab-tutorial.pdf)

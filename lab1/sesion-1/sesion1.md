@@ -14,6 +14,13 @@ En esta sesión se van a conocer las principales herramientas de desarrollo que 
 > [!TIP] 
 > En el documento [**intro-to-os-c-primer**](intro-to-os-c-primer.pdf) se resume todo lo que se estudiara en esta sección
 
+## Orden del dia
+
+- [ ] Linux basico [[link]](herramientas/linux-basico.md)
+- [ ] Manejo basico del compilador gcc [[link]](herramientas/intro-gcc.md)
+- [ ] Sobre la practica
+
+
 ## Recursos disponibles
 
 A continuación se muestran una lista de apuntes de clase que le pueden servir para el desarrollo de esta practica:
@@ -22,9 +29,6 @@ A continuación se muestran una lista de apuntes de clase que le pueden servir p
 2. **Compilador gcc** [[link]](https://udea-so.github.io/udea-so/docs/laboratorio/tutoriales/herramientas/gcc/)
 3. **Introducción al lenguaje C** [[link]](https://udea-so.github.io/intro-c/intro.html)
 
-## Orden del dia
-
-### Linux básico
 
 
 
