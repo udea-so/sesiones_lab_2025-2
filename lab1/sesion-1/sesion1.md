@@ -4,12 +4,7 @@
 
 ## Introducción
 
-En esta sesión se van a conocer las principales herramientas de desarrollo que se emplearan en el laboratorio:
-
-1. **Introducción a la consola de linux** [[link]](herramientas/linux-basico.md).
-2. **Manejo basico del compilador gcc** [[link]](herramientas/intro-gcc.md).
-3. **Manejo basico del git** [[link]](herramientas/intro-git.md).
-
+En esta sesión se van a conocer las principales herramientas de desarrollo que se emplearan en el laboratorio.
 
 > [!TIP] 
 > En el documento [**intro-to-os-c-primer**](intro-to-os-c-primer.pdf) se resume todo lo que se estudiara en esta sección
@@ -18,21 +13,19 @@ En esta sesión se van a conocer las principales herramientas de desarrollo que 
 
 Los contenidos a abordar en el laboratorio son:
 
-- [ ] Linux basico [[link]](herramientas/linux-basico.md)
-- [ ] Manejo basico del compilador gcc [[link]](herramientas/intro-gcc.md)
-- [ ] Sobre la practica [[link]](enunciado_practica/README.md)
-
+- [x] Introducción a la consola de linux [[link]](herramientas/linux-basico.md)
+- [x] Manejo basico del compilador gcc [[link]](herramientas/intro-gcc.md)
+- [x] Sobre la practica [[link]](enunciado_practica/README.md)
+- [ ] Manejo basico del git [[link]](herramientas/intro-git.md)
 
 ## Recursos disponibles
 
 A continuación se muestran una lista de apuntes de clase que le pueden servir para el desarrollo de esta practica:
 
-1. **Linux básico** [[link]](https://udea-so.github.io/udea-so/docs/laboratorio/tutoriales/herramientas/linux/)
-2. **Compilador gcc** [[link]](https://udea-so.github.io/udea-so/docs/laboratorio/tutoriales/herramientas/gcc/)
-3. **Introducción al lenguaje C** [[link]](https://udea-so.github.io/intro-c/intro.html)
-
-
-
+> [!Note]
+> 1. **Linux básico** [[link]](https://udea-so.github.io/udea-so/docs/laboratorio/tutoriales/herramientas/linux/)
+> 2. **Compilador gcc** [[link]](https://udea-so.github.io/udea-so/docs/laboratorio/tutoriales/herramientas/gcc/)
+> 3. **Introducción al lenguaje C** [[link]](https://udea-so.github.io/intro-c/intro.html)
 
 ## Referencias
 
