@@ -16,9 +16,11 @@ En esta sesión se van a conocer las principales herramientas de desarrollo que 
 
 ## Orden del dia
 
+Los contenidos a abordar en el laboratorio son:
+
 - [ ] Linux basico [[link]](herramientas/linux-basico.md)
 - [ ] Manejo basico del compilador gcc [[link]](herramientas/intro-gcc.md)
-- [ ] Sobre la practica
+- [ ] Sobre la practica [[link]](enunciado_practica/README.md)
 
 
 ## Recursos disponibles
