@@ -1,9 +1,13 @@
 # Sesión 2 - Introducción al lenguaje C
 
+## 
+
 ## Recursos
 
-El curso de Sistemas operativos dispone de unos apuntes de clase: **Introducción al lenguaje C** [[link]](https://udea-so.github.io/intro-c/intro.html) en el cual se encuentran la mayoria de los conceptos de este lenguaje necesarios para trabajar a lo largo de los laboratorios. A continuación se listan las diferentes secciones:
+El curso de Sistemas operativos dispone de unos apuntes de clase: **Introducción al lenguaje C** [[link]](https://udea-so.github.io/intro-c/intro.html) en el cual se encuentran la mayoria de los conceptos de este lenguaje necesarios para trabajar a lo largo de los laboratorios. 
 
+
+A continuación se listan las diferentes secciones resaltando las que tiene mayor importancia para el desarrollo de la practica:
 - [x] Introducción al lenguaje C [[teoria]](https://udea-so.github.io/intro-c/content/CH_02-S01.html) 
 - [x] Apuntadores y arreglos [[teoria]](https://udea-so.github.io/intro-c/content/CH_02-S02.html) [[ejemplos]](ejemplos_c/conceptos_c/punteros/README.md)
 - [x] Apuntadores y matrices [[teoria]](https://udea-so.github.io/intro-c/content/CH_02-S03.html) [[ejemplos]](ejemplos_c/conceptos_c/arreglos_matrices/README.md)
@@ -14,6 +18,7 @@ El curso de Sistemas operativos dispone de unos apuntes de clase: **Introducció
 
 ## Reference sheet
 
-> 1. **C Reference Card (ANSI)** [[link](../../resources/ref-cards/c-ref-cards/CRefCard.v2.2.pdf)]
-> 2. **The C Cheat Sheet** (Andrew Sterian) [[link]](../../resources/ref-cards/c-ref-cards/C.CheatSheet.pdf)
+> 1. **C Reference Card (ANSI)** [[link]
+](CRefCard.v2.2.pdf)
+> 2. **The C Cheat Sheet** (Andrew Sterian) [[link]](C.CheatSheet.pdf)
 
