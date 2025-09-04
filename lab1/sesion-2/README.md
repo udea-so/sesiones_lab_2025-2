@@ -15,10 +15,6 @@ En esta sesión se abordará el estudio del lenguaje C a partir de una comparaci
 5. Manejar archivos en C utilizando punteros a `FILE`, comprendiendo las funciones principales para apertura, escritura, lectura y cierre de archivos, tanto en modo texto como en modo binario.
 6. Aplicar buenas prácticas en C orientadas a la prevención de errores comunes, tales como accesos inválidos a memoria, punteros nulos o colgantes, fugas de memoria y fallos de segmentación (segmentation faults).
 
-## Tabla Comparativa Java vs. C vs. Python
-
-
-
 
 ## Recursos
 

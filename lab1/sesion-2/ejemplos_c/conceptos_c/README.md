@@ -1,5 +1,8 @@
 # Miselanea de ejemplos
 
+##
+
+
 ## Lista de ejemplos
 
 - [x] Arreglos y matrices [[link]](arreglos_matrices/)
@@ -14,6 +17,7 @@
 
 ## Referencias
 
+* https://pages.cs.wisc.edu/~gerald/cs354/Spring2019/
 * https://developerhelp.microchip.com/xwiki/bin/view/software-tools/c-programming/
 * https://developerhelp.microchip.com/xwiki/bin/view/software-tools/c-programming/lab9/
 * https://github.com/MicrochipTech/dh-c-programming-exercise-files/tree/main/Lab09.X
