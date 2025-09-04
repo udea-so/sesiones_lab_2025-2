@@ -1,44 +1,72 @@
-# Argumentos por linea de comandos
+# Argumentos por Línea de Comandos en C
 
+## 1. Fundamentos de los Argumentos en la Línea de Comandos
 
-## Actividad
+### 1.1. Introducción
 
-Descargue el archivo [cmd_line_examples.zip](cmd_line_examples.zip), descomprimalo e ingrese al directorio resultante:
+Una gran parte de las utilidades ejecutadas en una terminal de sistemas operativos tipo UNIX, tales como `ls`, `gcc` o `git`, emplean argumentos para modificar su comportamiento en tiempo de ejecución (e.g., `ls -l`, `gcc -o ejecutable fuente.c`). El manejo de argumentos por línea de comandos es una capacidad fundamental que permite el desarrollo de herramientas de software potentes y flexibles, capaces de recibir parámetros de entrada sin requerir interacción directa con el usuario durante su ejecución.
 
-```bash
-cd file_examples
-```
+Analice los ejemplos presentados para entender como un programa escrito en lenguaje C recibe y procesa dichos argumentos a través de los parámetros `argc` y `argv` de la función `main`.
 
-Una vez allí, liste los archivos en este directorio y verifique que se encuentre el archivo `Makefile`:
+### 1.2. Estructura de los Parámetros `argc` y `argv`
 
-```bash
-ls
-```
+Cuando un programa es invocado desde la terminal, el sistema operativo transfiere los argumentos especificados a la función `main` a través de dos parámetros fundamentales:
 
-Luego, compile y genere los ejecutables mediante el siguiente comando:
+* **`int argc` (Argument Count):** Un tipo de dato entero que almacena el número total de cadenas de caracteres pasadas como argumento, incluyendo el nombre del propio programa ejecutable. Por consiguiente, su valor mínimo es siempre 1.
+* **`char *argv[]` (Argument Vector):** Un vector (arreglo) de punteros a carácter, donde cada elemento apunta al inicio de una cadena de caracteres que representa un argumento individual.
+    * `argv[0]` contiene el nombre con el cual fue invocado el programa.
+    * `argv[1]` contiene el primer argumento explícito, y así sucesivamente hasta `argv[argc - 1]`.
 
-```bash
-make
-```
-
-Si todo sale bien, por cada archivo fuente (`.c`) se genera un archivo ejecutable cuyo nombre será el mismo del archivo fuente si na extención. 
-
-Para ejecutar los ejemplos use el nombre del archivo resultante al compilar sin tener en cuenta la extención (`.c`). Por ejemplo, si el archivo se llama `ejemplo.c`, para ejecutar el archivo generado por el makefile use el siguiente comando comando:
+A modo de ilustración, dado el siguiente comando ejecutado en la terminal:
 
 ```bash
-./ejemplo
+./mi_programa parametro1 123
 ```
 
-## Ejemplos
+La información es recibida y estructurada por el programa de la siguiente forma:
 
-Analice y ejecute la siguiente lista de ejemplos:
+|Parámetro| Descripción	|Valor|
+|---|---|---|
+|`argc`|Contador de argumentos|3|
+|`argv`|Vector de argumentos|`argv[0] -> "./mi_programa"` <br> `argv[1] -> "parametro1"` <br> `argv[2] -> "123"`|
 
-1. [cmd_line_args01.c](#ejemplo-1)
-2. [cmd_line_args02.c](#ejemplo-2)
+## 2. Actividad Preliminar: Compilación del Código
 
-### Ejemplo 1
+Para proceder con el análisis, es necesario descargar, descomprimir y compilar los archivos fuente proporcionados.
+1. **Descargar y Descomprimir**: Obtenga el archivo `cmd_line_examples.zip` y extráigalo en un directorio de trabajo.
 
-**Archivo**: [cmd_line_args01.c](cmd_line_args01.c)
+   ```bash
+   unzip cmd_line_examples.zip
+   ``` 
+
+2. **Acceder al Directorio**: Navegue hacia el directorio resultante (`cmd_line_examples`).
+   
+    ```bash
+    cd file_examples
+    ```
+
+    > [!tip] 
+    Despues de acceder acceder al directorio, empleando el comando `ls`, liste los archivos que se encuentran en este y verifique que se encuentre el archivo `Makefile`
+  
+3. **Compilar los Ejemplos**: Utilice la utilidad `make` para compilar los archivos fuente (`.c`). Este proceso generará un archivo ejecutable por cada fuente.
+   
+   ```bash
+   make
+   ```
+
+4. **Ejecute los ejecutables generados**: Si el proceso anterior es correcto, por cada archivo fuente (`.c`) se genera un archivo ejecutable cuyo nombre será el mismo del archivo fuente si la extención. Para esto ejecute el siguiente comando:
+   
+   ```bash
+   ./nombreEjecutable
+   ```
+
+## 3. Análisis del Código Fuente
+
+Se proporcionan dos ejemplos para su análisis. Ambos son funcionalmente idénticos pero ilustran una diferencia sintáctica en la declaración de `argv`.
+
+### 3.1. Primer Ejemplo: `cmd_line_args01.c`
+
+A continuación se muestra el contenido del archivo fuente [`cmd_line_args01.c`](cmd_line_args01.c) para facilitar su analisis:
 
 ```c
 /*
@@ -67,75 +95,66 @@ int main(int argc, char *argv[])
 }
 ```
 
-Para ejecutar use el comando:
+### 3.2 Segundo Ejemplo y Equivalencia de Sintaxis (`char **argv`)
 
-* **Test 1**:
-  
-  ```
-  ./cmd_line_args01
-  ```
-
-* **Test 2**:
-
-```
-./cmd_line_args01 pepe 10 0.2
-```
-
-### Ejemplo 2
-
-**Archivo**: [cmd_line_args02.c](cmd_line_args02.c)
+El segundo archivo, [`cmd_line_args02.c`](cmd_line_args02.c), presenta una única modificación en la firma de la función `main`:
 
 ```c
-/*
-Author: Adalbert Gerald Soosai Raj
-URL: https://pages.cs.wisc.edu/~gerald/cs354/Spring2019/code/lecture03/cmd_line_args02.c
-*/
-
-#include <stdio.h>
-#include <stdlib.h>
-
-// Argument vector (argv) is declared as a pointer to a character pointer.
-// In other words, argv is a pointer to a pointer to a character.
 int main(int argc, char **argv)
-{
-    int i;
-
-    if (argc != 4) {
-        fprintf(stderr, "USAGE: %s <name> <age> <alpha>\n", argv[0]);
-        exit(1);
-    }
-    
-    for (i = 0; i < 4; ++i) {
-        printf("argv[%d] = %s\n", i, argv[i]);
-    }
-
-    return 0;
-}
 ```
 
-Para ejecutar use el comando:
+> [!Tip]
+En el contexto de un parámetro de función en C, las declaraciones char `*argv[]` y char `**argv` son funcionalmente equivalentes. La primera se interpreta como "un arreglo de punteros a carácter", mientras que la segunda se interpreta como "un puntero a un puntero a carácter" esto se vera luego con mas detalle.
 
-* **Test 1**:
+## 4. Ejercicio Propuesto
+
+Para consolidar los conceptos presentados, se propone el siguiente ejercicio práctico:
+1. Crear un nuevo archivo fuente a partir de una copia de `cmd_line_args01.c`, denominado `saludo.c`.
+2. Modificar el código fuente de `saludo.c` para que el programa cumpla con las siguientes especificaciones:
+   * Debe esperar recibir exactamente un argumento por línea de comandos (un nombre de usuario), resultando en un `argc` de 2.
+   * Debe validar que el número de argumentos sea el correcto. En caso contrario, debe mostrar un mensaje de uso apropiado.
+   * Si el número de argumentos es correcto, debe imprimir un saludo personalizado en la salida estándar.
+
+### Comportamiento esperado del ejecutable
+
+* **Ejecución con el número correcto de argumentos**:
   
+  ```bash
+  ./saludo Yesus
   ```
-  ./cmd_line_args02
+
+  Salida esperada del comando anterior:
+
+  ```bash
+  Saludos, Yesus. Bienvenido al sistema.
   ```
 
-* **Test 2**:
+* **Ejecución con un número incorrecto de argumentos:**
+  
+  ```bash
+  ./saludo
+  ```
 
-```
-./cmd_line_args02 pepe 10 0.2
-```
+  Salida esperada del comando anterior:
 
-## Referencias teoricas
+  ```bash
+  Uso correcto: ./saludo <nombre_de_usuario>
+  ```
+
+## 5. Referencias teoricas
 
 A continuación se muestran algunos apuntes de clase que ilustran algunos conceptos teoricos necesarios para comprender la lista de ejemplos adjuntos:
 
 * **Command Line Arguments** [[link]](https://diveintosystems.org/book/C2-C_depth/advanced_cmd_line_args.html)
 
-## Enlaces
+## 6. Enlaces de utilidad
 
 * https://diveintosystems.org/
-* https://docs.google.com/document/d/1YyOs7Az5JodqKscj5KiPl0ZpxAUMZ6d9EYIPxUrsGig/edit
-* https://docs.google.com/document/d/1EGIRt1JSe1Dh2UclyVkEufg2ExJKUBWdaH3SYTsoNF0/edit#heading=h.sxobt3v8bjei
-* https://docs.google.com/document/d/1YyOs7Az5JodqKscj5KiPl0ZpxAUMZ6d9EYIPxUrsGig/edit#heading=h.9zrjc4s0l7tx
+* http://cslibrary.stanford.edu/102/PointersAndMemory.pdf
+* https://diveintosystems.org/book/C1-C_intro/index.html
+
+
+> [!Note]
+> **AI Disclosure:** This document was created with the assistance of Artificial Intelligence language models. The content has been reviewed, edited, and validated by a human author to ensure accuracy and quality.
+
+[⬆️ Subir un nivel](../)
