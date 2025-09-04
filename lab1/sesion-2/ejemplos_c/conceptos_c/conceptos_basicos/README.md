@@ -4,11 +4,13 @@ Este directorio contiene ejemplos sencillos para ilustrar conceptos fundamentale
 
 ## Archivos incluidos
 
-- [`helloworld.c`](helloworld.c): Ejemplo de programa básico en C que imprime un mensaje en pantalla.
-- [`cylinder.c`](cylinder.c): Cálculo del volumen de un cilindro usando variables y entrada estándar.
-- [`pointers.c`](pointers.c): Ejemplo sobre el uso de punteros en C.
-- [`HelloWorld.java`](HelloWorld.java): Programa básico en Java que imprime un mensaje.
-- [`VolumeOfCylinder.java`](VolumeOfCylinder.java): Cálculo del volumen de un cilindro en Java.
+A continuación se muestran los archivos incluidos como ejemplos preliminares. 
+
+- [x] [`helloworld.c`](helloworld.c): Ejemplo de programa básico en C que imprime un mensaje en pantalla.
+- [x] [`cylinder.c`](cylinder.c): Cálculo del volumen de un cilindro usando variables y entrada estándar.
+- [x]  [`pointers.c`](pointers.c): Ejemplo sobre el uso de punteros en C.
+- [ ]  [`HelloWorld.java`](HelloWorld.java): Programa básico en Java que imprime un mensaje.
+- [ ] [`VolumeOfCylinder.java`](VolumeOfCylinder.java): Cálculo del volumen de un cilindro en Java.
 
 ## Conceptos cubiertos
 
@@ -62,3 +64,5 @@ java HelloWorld
 javac VolumeOfCylinder.java
 java VolumeOfCylinder
 ```
+
+[⬆️ Subir un nivel](../)
