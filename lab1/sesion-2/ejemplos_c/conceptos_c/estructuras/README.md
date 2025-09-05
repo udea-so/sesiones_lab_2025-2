@@ -261,8 +261,8 @@ Para proceder con el análisis, es necesario descargar, descomprimir y compilar 
    cd structs_examples
    ```
 
-   > [!Tip]
-   > Despues de acceder acceder al directorio, empleando el comando `ls`, liste los archivos que se encuentran en este y verifique que se encuentre el archivo `Makefile`
+   > [!TIP]
+      > Despues de acceder acceder al directorio, empleando el comando `ls`, liste los archivos que se encuentran en este y verifique que se encuentre el archivo `Makefile`
 
 3. **Compilar los Ejemplos**: Utilice la utilidad make para compilar los archivos fuente (.c). Este proceso generará un archivo ejecutable por cada fuente.
 
