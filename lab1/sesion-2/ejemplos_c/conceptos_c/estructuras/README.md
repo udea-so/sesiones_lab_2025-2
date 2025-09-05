@@ -1,6 +1,6 @@
-# Estructuras
+# Manejo de estructuras
 
-## Introducción
+## 1. Introducción
 
 En el lenguaje C, la estructura (`struct`) es un tipo de dato compuesto fundamental que permite la agregación de datos, resolviendo el problema de gestionar información relacionada de tipos heterogéneos que, de otro modo, requeriría el uso de arreglos paralelos, una práctica ineficiente y propensa a errores.
 
@@ -13,11 +13,11 @@ Para poner estos conceptos en práctica, el siguiente directorio de ejemplos ilu
 > * https://udea-so.github.io/intro-c/content/CH_02-S04.html
 
 
-## Aspectos Teóricos Fundamentales de las Estructuras en C
+## 2. Aspectos Teóricos Fundamentales de las Estructuras en C
 
 Antes de analizar el código, es crucial comprender cuatro conceptos que gobiernan cómo se definen, usan y manipulan las estructuras (`struct`) en C.
 
-### 1. Declaración y `typedef`: El Molde vs. el Objeto Real
+### 2.1. Declaración y `typedef`: El Molde vs. el Objeto Real
 
 Una **`struct`** es una **plantilla** o "molde" que define cómo agrupar un conjunto de variables de diferentes tipos en una sola unidad. Por sí sola, la declaración de una estructura no reserva memoria para los datos; simplemente crea un nuevo tipo de dato compuesto.
 
@@ -48,7 +48,7 @@ Para simplificar la creación de variables, se utiliza **`typedef`**, que crea u
     Estudiante estudiante1; // Sintaxis más limpia y directa.
     ```
 
-### 2. Acceso a Miembros: El Punto (`.`) vs. La Flecha (`->`)
+### 2.2. Acceso a Miembros: El Punto (`.`) vs. La Flecha (`->`)
 Esta es la regla de oro para manipular los datos dentro de una estructura, y depende de de si se tiene la variable directamente o un puntero a ella.
 
 * **Operador Punto (`.`):** Se utiliza cuando se trabaja con la **variable de forma directa**.
@@ -66,7 +66,7 @@ Esta es la regla de oro para manipular los datos dentro de una estructura, y dep
     ```
 La sintaxis de flecha `ptr_est->codigo` es simplemente un atajo más legible para no tener que escribir `(*ptr_est).codigo`.
 
-### 3. Gestión de Memoria: Stack vs. Heap
+### 2.3. Gestión de Memoria: Stack vs. Heap
 
 A diferencia de otros lenguajes que cuentan con mecanismos de recolección automática de basura, en C la gestión de la memoria recae directamente en el programador. Por ello, resulta fundamental conocer el **mapa de memoria**, ya que este proporciona una visión clara de dónde y cómo se almacenan los diferentes tipos de datos durante la ejecución de un programa. La figura ilustra la organización típica de la memoria de un proceso dentro de un sistema operativo, distinguiendo secciones específicas como el segmento de código, el área de datos, el heap y el stack, cada una con funciones y características particulares que el programador debe comprender para garantizar un uso correcto y eficiente de los recursos de memoria.
 
@@ -82,7 +82,7 @@ En el caso de las estructuras, estas pueden existir en dos lugares distintos:
     free(est_dinamico); // Tu responsabilidad es liberarla.
     ```
 
-### 4. Paso a Funciones: Por Valor vs. Por Puntero
+### 2.4. Paso a Funciones: Por Valor vs. Por Puntero
 
 La forma en que se pasa una estructura a una función afecta el rendimiento y si se pueden o no modificar los datos originales.
 
@@ -101,577 +101,207 @@ La forma en que se pasa una estructura a una función afecta el rendimiento y si
 
 Por eficiencia y flexibilidad, **el paso por puntero es el método estándar y preferido** en la programación en C.
 
-To Do...
+## 3. Ejemplos introductorios
 
-1. Tabla resumen de lo anterior.
-2. Tabla comparativa con otros lenguajes
-3. Ejemplo paso a paso.
+A continuación se muestran varios ejemplos sencillos donde se aplican los conceptos fundamentales sobre estructuras previamente tratados.
 
-## Actividad
+> [!Warning]
+> La parte relacionada con el manejo del **heap** se tratará en el seccion de manejo de memoria dinamica.
 
-Descargue el archivo [structs_examples.zip](structs_examples.zip), descomprimalo e ingrese al directorio resultante:
+### 3.1. Definición y declaración
 
-```bash
-cd structs_examples
-```
+El siguiente ejemplo muestra cómo definir y usar una estructura en C ([simulacion](https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%0A//%20Definici%C3%B3n%20de%20la%20estructura%0Astruct%20Persona%20%7B%0A%20%20%20%20char%20nombre%5B50%5D%3B%0A%20%20%20%20int%20edad%3B%0A%7D%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20//%20Declaraci%C3%B3n%20de%20una%20variable%20de%20tipo%20estructura%0A%20%20%20%20struct%20Persona%20p1%3B%0A%0A%20%20%20%20//%20Asignaci%C3%B3n%20de%20valores%0A%20%20%20%20p1.edad%20%3D%2020%3B%0A%20%20%20%20printf%28%22Edad%3A%20%25d%5Cn%22,%20p1.edad%29%3B%0A%0A%20%20%20%20return%200%3B%0A%7D&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false)). 
 
-Una vez allí, liste los archivos en este directorio y verifique que se encuentre el archivo `Makefile`:
+**Archivo**: [ej1_declaracion_structs.c](comparacion_lenguajes/c/ej1_declaracion_structs.c)
 
-```bash
-ls
-```
-
-Luego, compile y genere los ejecutables mediante el siguiente comando:
-
-```bash
-make
-```
-
-Si todo sale bien, por cada archivo fuente (`.c`) se genera un archivo ejecutable cuyo nombre será el mismo del archivo fuente si na extención. 
-
-Para ejecutar los ejemplos use el nombre del archivo resultante al compilar sin tener en cuenta la extención (`.c`). Por ejemplo, si el archivo se llama `ejemplo.c`, para ejecutar el archivo generado por el makefile use el siguiente comando comando:
-
-```bash
-./ejemplo
-```
-
-## Ejemplos
-
-Analice y ejecute la siguiente lista de ejemplos:
-
-1. [structs01.c](#ejemplo-1)
-2. [structs02.c](#ejemplo-2)
-3. [structs03.c](#ejemplo-3)
-4. [structs04.c](#ejemplo-4)
-5. [structs05.c](#ejemplo-5)
-6. [structs06.c](#ejemplo-6)
-7. [structs07.c](#ejemplo-7)
-
-### Ejemplo 1
-
-**Archivo**: [structs01.c](structs01.c)
 
 ```c
-/*
-Book: Programming in C
-Author: Stephen G. Kochan
-*/
-
 #include <stdio.h>
 
-int main(void) {
-    struct date {
-        int month;
-        int day;
-        int year;
-    };
-    struct date today;
-    
-    today.month = 9;
-    today.day = 25;
-    today.year = 2004;
-
-    printf("Today's date is %i/%i/%.2i.\n", today.month, today.day,
-           today.year);
-    return 0;
-}
-```
-
-Para ejecutar use el comando:
-
-```
-./structs01
-```
-
-### Ejemplo 2
-
-**Archivo**: [structs02.c](structs02.c)
-
-```c
-/*
-Book: Programming in C
-Author: Stephen G. Kochan
-*/
-
-// Program to determine tomorrow's date
-#include <stdio.h>
-
-int main(void) {
-    struct date {
-        int month;
-        int day;
-        int year;
-    };
-    
-    struct date today, tomorrow;
-
-    const int daysPerMonth[12] = {31, 28, 31, 30, 31, 30,
-                                  31, 31, 30, 31, 30, 31};
-    
-    printf("Enter today's date (mm dd yyyy): ");
-    scanf("%i%i%i", &today.month, &today.day, &today.year);
-    
-    if (today.day != daysPerMonth[today.month - 1]) {
-        tomorrow.day = today.day + 1;
-        tomorrow.month = today.month;
-        tomorrow.year = today.year;
-    }
-    else if (today.month == 12) { // end of year
-        tomorrow.day = 1;
-        tomorrow.month = 1;
-        tomorrow.year = today.year + 1;
-    }
-    else { // end of month
-        tomorrow.day = 1;
-        tomorrow.month = today.month + 1;
-        tomorrow.year = today.year;
-    }
-
-    printf("Tomorrow's date is %i/%i/%.2i.\n", tomorrow.month,
-           tomorrow.day, tomorrow.year);
-    return 0;
-}
-```
-
-Para ejecutar use el comando:
-
-```
-./structs02
-```
-
-### Ejemplo 3
-
-**Archivo**: [structs03.c](structs03.c)
-
-```c
-/*
-Book: Programming in C
-Author: Stephen G. Kochan
-*/
-
-// Program to determine tomorrow's date
-#include <stdio.h>
-#include <stdbool.h>
-
-struct date {
-    int month;
-    int day;
-    int year;
+// Definición de la estructura
+struct Persona {
+    char nombre[50];
+    int edad;
 };
-
-int numberOfDays(struct date);
-bool isLeapYear(struct date);
-struct date dateUpdate1(struct date);
-struct date dateUpdate2(struct date);
-
-int main(void) {
-    struct date dateUpdate(struct date today);
-    struct date thisDay, nextDay;
-    printf("Enter today's date (mm dd yyyy): ");
-    scanf("%i%i%i", &thisDay.month, &thisDay.day,
-          &thisDay.year);
-    // Get next day using dateUpdate1
-    nextDay = dateUpdate1(thisDay);
-    printf("Tomorrow's date is %i/%i/%.2i.\n", nextDay.month,
-           nextDay.day, nextDay.year);
-           
-    // Get next day using dateUpdate2 (The result is te same)
-    nextDay = dateUpdate2(thisDay);
-    printf("Tomorrow's date is %i/%i/%.2i.\n", nextDay.month,
-           nextDay.day, nextDay.year);
-    return 0;
-}
-
-// Function to calculate tomorrow's date
-struct date dateUpdate1(struct date today) {
-    struct date tomorrow;
-    int numberOfDays(struct date d);
-    if (today.day != numberOfDays(today))
-    {
-        tomorrow.day = today.day + 1;
-        tomorrow.month = today.month;
-        tomorrow.year = today.year;
-    }
-    else if (today.month == 12)
-    { // end of year
-        tomorrow.day = 1;
-        tomorrow.month = 1;
-        tomorrow.year = today.year + 1;
-    }
-    else
-    { // end of month
-        tomorrow.day = 1;
-        tomorrow.month = today.month + 1;
-        tomorrow.year = today.year;
-    }
-    return tomorrow;
-}
-
-// Function to calculate tomorrow's date â€“ using compound literals
-struct date dateUpdate2(struct date today) {
-    struct date tomorrow;
-    int numberOfDays(struct date d);
-    if (today.day != numberOfDays(today))
-        tomorrow = (struct date){today.month, today.day + 1, today.year};
-    else if (today.month == 12) // end of year
-        tomorrow = (struct date){1, 1, today.year + 1};
-    else // end of month
-        tomorrow = (struct date){today.month + 1, 1, today.year};
-    return tomorrow;
-}
-
-// Function to find the number of days in a month
-int numberOfDays(struct date d) {
-    int days;
-    bool isLeapYear(struct date d);
-    const int daysPerMonth[12] =
-        {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    if (isLeapYear(d) == true && d.month == 2)
-        days = 29;
-    else
-        days = daysPerMonth[d.month - 1];
-    return days;
-}
-
-// Function to determine if it's a leap year
-bool isLeapYear(struct date d) {
-    bool leapYearFlag;
-    if ((d.year % 4 == 0 && d.year % 100 != 0) ||
-        d.year % 400 == 0)
-        leapYearFlag = true; // It's a leap year
-    else
-        leapYearFlag = false; // Not a leap year
-    return leapYearFlag;
-}
-```
-
-Para ejecutar use el comando:
-
-```
-./structs03
-```
-
-
-### Ejemplo 4
-
-**Archivo**: [structs04.c](structs04.c)
-
-```c
-/*
-Book: Programming in C
-Author: Stephen G. Kochan
-*/
-
-// Program to update the time by one second
-
-#include <stdio.h>
-struct time {
-    int hour;
-    int minutes;
-    int seconds;
-};
-
-struct time timeUpdate(struct time);
-
-int main(void) {
-    struct time timeUpdate(struct time now);
-    struct time currentTime, nextTime;
-    printf("Enter the time (hh:mm:ss): ");
-    scanf("%i:%i:%i", &currentTime.hour,
-          &currentTime.minutes, &currentTime.seconds);
-    nextTime = timeUpdate(currentTime);
-    printf("Updated time is %.2i:%.2i:%.2i\n", nextTime.hour,
-           nextTime.minutes, nextTime.seconds);
-    return 0;
-}
-
-// Function to update the time by one second
-struct time timeUpdate(struct time now) {
-    ++now.seconds;
-    if (now.seconds == 60) { // next minute
-        now.seconds = 0;
-        ++now.minutes;
-        if (now.minutes == 60) { // next hour
-            now.minutes = 0;
-            ++now.hour;
-            if (now.hour == 24) // midnight
-                now.hour = 0;
-        }
-    }
-    return now;
-}
-```
-
-Para ejecutar use el comando:
-
-```
-./structs04
-```
-
-### Ejemplo 5
-
-**Archivo**: [structs05.c](structs05.c)
-
-```c
-/*
-Book: Programming in C
-Author: Stephen G. Kochan
-*/
-
-// Program to illustrate arrays of structures
-#include <stdio.h>
-
-struct time {
-    int hour;
-    int minutes;
-    int seconds;
-};
-
-struct time timeUpdate(struct time);
-
-int main(void) {
-    struct time timeUpdate(struct time now);
-    struct time testTimes[5] =
-        {{11, 59, 59}, {12, 0, 0}, {1, 29, 59}, {23, 59, 59}, {19, 12, 27}};
-    int i;
-    for (i = 0; i < 5; ++i) {
-        printf("Time is %.2i:%.2i:%.2i", testTimes[i].hour,
-               testTimes[i].minutes, testTimes[i].seconds);
-        testTimes[i] = timeUpdate(testTimes[i]);
-        printf(" ...one second later it's %.2i:%.2i:%.2i\n",
-               testTimes[i].hour, testTimes[i].minutes, testTimes[i].seconds);
-    }
-    return 0;
-}
-
-// Function to update the time by one second
-struct time timeUpdate(struct time now) {
-    ++now.seconds;
-    if (now.seconds == 60) { // next minute
-        now.seconds = 0;
-        ++now.minutes;
-        if (now.minutes == 60) { // next hour
-            now.minutes = 0;
-            ++now.hour;
-            if (now.hour == 24) { // midnight
-                now.hour = 0;
-            }
-        }
-    }
-    return now;
-}
-```
-
-Para ejecutar use el comando:
-
-```
-./structs05
-```
-
-### Ejemplo 6
-
-**Archivo**: [structs06.c](structs06.c)
-
-```c
-/*
-Book: Programming in C
-Author: Stephen G. Kochan
-*/
-
-// Program to illustrate structures and arrays
-
-#include <stdio.h>
-
-int main(void)
-{
-    int i;
-    struct month
-    {
-        int numberOfDays;
-        char name[3];
-    };
-
-    const struct month months[12] = {
-                                        {31, {'J', 'a', 'n'}}, 
-                                        {28, {'F', 'e', 'b'}}, 
-                                        {31, {'M', 'a', 'r'}}, 
-                                        {30, {'A', 'p', 'r'}}, 
-                                        {31, {'M', 'a', 'y'}}, 
-                                        {30, {'J', 'u', 'n'}}, 
-                                        {31, {'J', 'u', 'l'}}, 
-                                        {31, {'A', 'u', 'g'}}, 
-                                        {30, {'S', 'e', 'p'}}, 
-                                        {31, {'O', 'c', 't'}}, 
-                                        {30, {'N', 'o', 'v'}}, 
-                                        {31, {'D', 'e', 'c'}}
-                                    };
-
-    printf("Month Number of Days\n");
-    printf("----- --------------\n");
-
-    for (i = 0; i < 12; ++i) {
-        printf(" %c%c%c %i\n",
-               months[i].name[0], months[i].name[1],
-               months[i].name[2], months[i].numberOfDays);
-        }
-    return 0;
-}
-```
-
-Para ejecutar use el comando:
-
-```
-./structs06
-```
-
-### Ejemplo 7
-
-**Archivo**: [structs07.c](structs07.c)
-
-```c
-/*
-Book: Advanced Topics in C
-Author: Noel Kalicharan
-URL: https://github.com/Apress/adv-topics-in-c/blob/master/P21SortSearchStruct.c
-*/
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <errno.h>
-
-#define MaxStudents 100
-#define MaxNameLength 30
-#define MaxNameBuffer MaxNameLength+1
-
-typedef struct {
-	char name[MaxNameBuffer];
-	int age;
-	char gender;
-} Student;
-
-void printStudent(Student);
-int getData(FILE *, Student []);
-int search(char [], Student [], int);
-void sort(Student [], int);
-void getString(FILE *, char []) ;
-char readChar(FILE *);
 
 int main() {
-	Student pupil[MaxStudents];
-	char aName[MaxNameBuffer];
+    // Declaración de una variable de tipo estructura
+    struct Persona p1;
 
-	FILE * in = fopen("input.txt", "r");
-	if (in == NULL) {
-		printf("Error opening file: %s.\n", strerror(errno));
-		exit(1);
-	}
+    // Asignación de valores
+    p1.edad = 20;
+    printf("Edad: %d\n", p1.edad);
 
-	int numStudents = getData(in, pupil);
-	if (numStudents == 0) {
-		printf("No data supplied for students");
-		exit(1);
-	}
-
-  printf("\n");
-  for (int h = 0; h < numStudents; h++) printStudent(pupil[h]);
-	printf("\n");
-
-	getString(in, aName);
-	while (strcmp(aName, "END") != 0) {
-		int ans = search(aName, pupil, numStudents);
-		if (ans == -1) printf("%s not found\n", aName);
-		else printf("%s found at location %d\n", aName, ans);
-		getString(in, aName);
-	}
-
-	sort(pupil, numStudents);
-	printf("\n");
-  for (int h = 0; h < numStudents; h++) printStudent(pupil[h]);
-} //end main
-
-void printStudent(Student t) {
-	printf("Name: %s Age: %d Gender: %c\n", t.name, t.age, t.gender);
-} //end printStudent
-
-int getData(FILE *in, Student list[]) {
-	char temp[MaxNameBuffer];
-	void getString(FILE *, char[]);
-	char readChar(FILE *);
-
-  int n = 0;
-  getString(in, temp);
-	while (n < MaxStudents && strcmp(temp, "END") != 0) {
-		strcpy(list[n].name, temp);
-		fscanf(in, "%d", &list[n].age);
-		list[n].gender = readChar(in);
-		n++;
-		getString(in, temp);
-	}
-	return n;
-} //end getData
-
-int search(char key[], Student list[], int n) {
-//search for key in list[0] to list[n-1]
-//if found, return the location; if not found, return -1
-	for (int h = 0; h < n; h++)
-		if (strcmp(key, list[h].name) == 0) return h;
-	return -1;
-} //end search
-
-void sort(Student list[], int n) {
-//sort list[0] to list[n-1] by name using an insertion sort
-	for (int h = 1; h < n; h++) {
-		Student temp = list[h];
-		int k = h - 1;
-		while (k >= 0 && strcmp(temp.name, list[k].name) < 0) {
-			list[k + 1] = list[k];
-			k = k - 1;
-		}
-    list[k + 1] = temp;
-	} //end for
-} //end sort
-
-void getString(FILE * in, char str[]) {
-//stores, in str, the next string within delimiters
-// the first non-whitespace character is the delimiter
-// the string is read from the file 'in'
-
-	char ch, delim;
-	int n = 0;
-	str[0] = '\0';
-	// read over white space
-	while (isspace(ch = getc(in))) ; //empty while body
-	if (ch == EOF) return;
-
-	delim = ch;
-	while (((ch = getc(in)) != delim) && (ch != EOF))
-		str[n++] = ch;
-	str[n] = '\0';
-} // end getString
-
-char readChar(FILE * in) {
-	char ch;
-	while (isspace(ch = getc(in))) ; //empty while body
-	return ch;
-} //end readChar
+    return 0;
+}
 ```
 
-Para ejecutar use el comando:
+### 3.2. Acceso a los miembros con el operador `.`
 
-```
-./structs07
+Este ejemplo muestra como acceder a los miembros de la estructura. Para el caso se uso la función como `strcpy` para manejar cadenas en estructuras. ([simulacion](https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%23include%20%3Cstring.h%3E%0A%0Astruct%20Persona%20%7B%0A%20%20%20%20char%20nombre%5B50%5D%3B%0A%20%20%20%20int%20edad%3B%0A%7D%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20struct%20Persona%20p1%3B%0A%0A%20%20%20%20strcpy%28p1.nombre,%20%22Ana%20Perez%22%29%3B%0A%20%20%20%20p1.edad%20%3D%2022%3B%0A%0A%20%20%20%20printf%28%22Nombre%3A%20%25s%5Cn%22,%20p1.nombre%29%3B%0A%20%20%20%20printf%28%22Edad%3A%20%25d%5Cn%22,%20p1.edad%29%3B%0A%0A%20%20%20%20return%200%3B%0A%7D&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false))
+
+**Archivo**: [ej2_acceso_punto_structs.c](comparacion_lenguajes/c/ej2_acceso_punto_structs.c)
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+struct Persona {
+    char nombre[50];
+    int edad;
+};
+
+int main() {
+    struct Persona p1;
+
+    strcpy(p1.nombre, "Ana Perez");
+    p1.edad = 22;
+
+    printf("Nombre: %s\n", p1.nombre);
+    printf("Edad: %d\n", p1.edad);
+
+    return 0;
+}
 ```
 
-## Referencias teoricas
+### 3.3. Uso de `typedef` para simplificar
+
+Mediante el uso de un alias, se facilita la declaración de un tipo de dato asociado a una estructura al evitar repetir la palabra clave `struct`. ([simulacion](https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%0Atypedef%20struct%20%7B%0A%20%20%20%20char%20nombre%5B50%5D%3B%0A%20%20%20%20int%20edad%3B%0A%7D%20Persona%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20Persona%20p1%20%3D%20%7B%22Luis%20Gomez%22,%2030%7D%3B%0A%20%20%20%20Persona%20p2%20%3D%20%7B.nombre%20%3D%20%22Marta%20Peralta%22,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.edad%20%3D%2030%7D%3B%0A%0A%20%20%20%20printf%28%22%25s%20tiene%20%25d%20a%C3%B1os%5Cn%22,%20p1.nombre,%20p1.edad%29%3B%0A%20%20%20%20printf%28%22%25s%20tiene%20%25d%20a%C3%B1os%5Cn%22,%20p2.nombre,%20p2.edad%29%3B%0A%0A%20%20%20%20return%200%3B%0A%7D&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false))
+
+**Archivo**: [ej3_typedef_structs.c](comparacion_lenguajes/c/ej3_typedef_structs.c)
+
+```c
+#include <stdio.h>
+
+typedef struct {
+    char nombre[50];
+    int edad;
+} Persona;
+
+int main() {
+    Persona p1 = {"Luis Gomez", 30};
+    Persona p2 = {.nombre = "Marta Peralta", 
+                  .edad = 30};
+
+    printf("%s tiene %d años\n", p1.nombre, p1.edad);
+    printf("%s tiene %d años\n", p2.nombre, p2.edad);
+
+    return 0;
+}
+```
+
+### 3.4. Punteros a estructuras y operador `->`
+
+El siguiente ejemplo introduce el acceso indirecto mediante punteros. ([simulacion](https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%0Atypedef%20struct%20%7B%0A%20%20%20%20char%20nombre%5B50%5D%3B%0A%20%20%20%20int%20edad%3B%0A%7D%20Persona%3B%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20Persona%20p1%20%3D%20%7B%22Marta%22,%2025%7D%3B%0A%20%20%20%20Persona%20*ptr%20%3D%20%26p1%3B%0A%0A%20%20%20%20//%20Acceso%20con%20operador%20-%3E%0A%20%20%20%20printf%28%22Nombre%3A%20%25s%5Cn%22,%20ptr-%3Enombre%29%3B%0A%20%20%20%20printf%28%22Edad%3A%20%25d%5Cn%22,%20ptr-%3Eedad%29%3B%0A%0A%20%20%20%20return%200%3B%0A%7D&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false))
+
+**Archivo**: [ej4_acceso_flecha_structs.c](comparacion_lenguajes/c/ej4_acceso_flecha_structs.c)
+
+```c
+#include <stdio.h>
+
+typedef struct {
+    char nombre[50];
+    int edad;
+} Persona;
+
+int main() {
+    Persona p1 = {"Marta", 25};
+    Persona *ptr = &p1;
+
+    // Acceso con operador ->
+    printf("Nombre: %s\n", ptr->nombre);
+    printf("Edad: %d\n", ptr->edad);
+
+    return 0;
+}
+```
+
+### 3.5. Paso de estructuras a funciones
+
+Aunque al llamar funciones es posible el paso de estructuras por valor, es mas recomendable parar dichas estructuras como parametros por referencia mediante el uso de puntero. ([simulacion](https://pythontutor.com/render.html#code=%23include%20%3Cstdio.h%3E%0A%0Atypedef%20struct%20%7B%0A%20%20%20%20char%20nombre%5B50%5D%3B%0A%20%20%20%20int%20edad%3B%0A%7D%20Persona%3B%0A%0A//%20Paso%20por%20referencia%20%28puntero%29%0Avoid%20imprimir%28Persona%20*p%29%20%7B%0A%20%20%20%20printf%28%22%25s%20tiene%20%25d%20a%C3%B1os%5Cn%22,%20p-%3Enombre,%20p-%3Eedad%29%3B%0A%7D%0A%0Aint%20main%28%29%20%7B%0A%20%20%20%20Persona%20p1%20%3D%20%7B%22Carlos%22,%2028%7D%3B%0A%0A%20%20%20%20imprimir%28%26p1%29%3B%0A%0A%20%20%20%20return%200%3B%0A%7D&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false))
+
+**Archivo**: [ej5_funciones_structs.c](comparacion_lenguajes/c/ej5_funciones_structs.c)
+
+
+```c
+#include <stdio.h>
+
+typedef struct {
+    char nombre[50];
+    int edad;
+} Persona;
+
+// Paso por referencia (puntero)
+void imprimir(Persona *p) {
+    printf("%s tiene %d años\n", p->nombre, p->edad);
+}
+
+int main() {
+    Persona p1 = {"Carlos", 28};
+
+    imprimir(&p1);
+
+    return 0;
+}
+```
+
+## 4. Actividad Preliminar: Compilación y analisis de ejemplos
+
+Para proceder con el análisis, es necesario descargar, descomprimir y compilar los archivos fuente proporcionados.
+
+1. **Descargar y descomprimir**: Obtenga el archivo [`structs_examples.zip`](structs_examples.zip) y extráigalo en un directorio de trabajo.
+   
+   ```bash
+   unzip structs_examples.zip
+   ```
+
+2. **Acceder al Directorio**: Navegue hacia el directorio resultante (`structs_examples`).
+
+   ```bash
+   cd structs_examples
+   ```
+
+   > [!Tip]
+   > Despues de acceder acceder al directorio, empleando el comando `ls`, liste los archivos que se encuentran en este y verifique que se encuentre el archivo `Makefile`
+
+3. **Compilar los Ejemplos**: Utilice la utilidad make para compilar los archivos fuente (.c). Este proceso generará un archivo ejecutable por cada fuente.
+
+   ```bash
+   make
+   ```
+
+4. **Ejecute los ejecutables generados**: Corra cada uno de los ejecutables generados previamente empleando el siguiente comando:
+
+   ```bash
+   ./nombreEjecutable
+   ```
+
+A continuación se muestra la lista de ejemplos la siguiente lista de ejemplos:
+1. [structs01.c](structs01.c) - [[simulacion](https://pythontutor.com/render.html#code=/*%0ABook%3A%20Programming%20in%20C%0AAuthor%3A%20Stephen%20G.%20Kochan%0A*/%0A%0A%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28void%29%20%7B%0A%20%20%20%20struct%20date%20%7B%0A%20%20%20%20%20%20%20%20int%20month%3B%0A%20%20%20%20%20%20%20%20int%20day%3B%0A%20%20%20%20%20%20%20%20int%20year%3B%0A%20%20%20%20%7D%3B%0A%20%20%20%20struct%20date%20today%3B%0A%20%20%20%20%0A%20%20%20%20today.month%20%3D%209%3B%0A%20%20%20%20today.day%20%3D%2025%3B%0A%20%20%20%20today.year%20%3D%202004%3B%0A%0A%20%20%20%20printf%28%22Today's%20date%20is%20%25i/%25i/%25.2i.%5Cn%22,%20today.month,%20today.day,%0A%20%20%20%20%20%20%20%20%20%20%20today.year%29%3B%0A%20%20%20%20return%200%3B%0A%7D&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false)]
+2. [structs02.c](structs02.c) 
+3. [structs03.c](structs03.c) 
+4. [structs04.c](structs04.c)
+5. [structs05.c](structs05.c)- [[simulacion](https://pythontutor.com/render.html#code=/*%0ABook%3A%20Programming%20in%20C%0AAuthor%3A%20Stephen%20G.%20Kochan%0A*/%0A%0A//%20Program%20to%20illustrate%20arrays%20of%20structures%0A%23include%20%3Cstdio.h%3E%0A%0Astruct%20time%20%7B%0A%20%20%20%20int%20hour%3B%0A%20%20%20%20int%20minutes%3B%0A%20%20%20%20int%20seconds%3B%0A%7D%3B%0A%0Astruct%20time%20timeUpdate%28struct%20time%29%3B%0A%0Aint%20main%28void%29%20%7B%0A%20%20%20%20struct%20time%20timeUpdate%28struct%20time%20now%29%3B%0A%20%20%20%20struct%20time%20testTimes%5B5%5D%20%3D%0A%20%20%20%20%20%20%20%20%7B%7B11,%2059,%2059%7D,%20%7B12,%200,%200%7D,%20%7B1,%2029,%2059%7D,%20%7B23,%2059,%2059%7D,%20%7B19,%2012,%2027%7D%7D%3B%0A%20%20%20%20int%20i%3B%0A%20%20%20%20for%20%28i%20%3D%200%3B%20i%20%3C%205%3B%20%2B%2Bi%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22Time%20is%20%25.2i%3A%25.2i%3A%25.2i%22,%20testTimes%5Bi%5D.hour,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20testTimes%5Bi%5D.minutes,%20testTimes%5Bi%5D.seconds%29%3B%0A%20%20%20%20%20%20%20%20testTimes%5Bi%5D%20%3D%20timeUpdate%28testTimes%5Bi%5D%29%3B%0A%20%20%20%20%20%20%20%20printf%28%22%20...one%20second%20later%20it's%20%25.2i%3A%25.2i%3A%25.2i%5Cn%22,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20testTimes%5Bi%5D.hour,%20testTimes%5Bi%5D.minutes,%20testTimes%5Bi%5D.seconds%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20return%200%3B%0A%7D%0A%0A//%20Function%20to%20update%20the%20time%20by%20one%20second%0Astruct%20time%20timeUpdate%28struct%20time%20now%29%20%7B%0A%20%20%20%20%2B%2Bnow.seconds%3B%0A%20%20%20%20if%20%28now.seconds%20%3D%3D%2060%29%20%7B%20//%20next%20minute%0A%20%20%20%20%20%20%20%20now.seconds%20%3D%200%3B%0A%20%20%20%20%20%20%20%20%2B%2Bnow.minutes%3B%0A%20%20%20%20%20%20%20%20if%20%28now.minutes%20%3D%3D%2060%29%20%7B%20//%20next%20hour%0A%20%20%20%20%20%20%20%20%20%20%20%20now.minutes%20%3D%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%2B%2Bnow.hour%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20%28now.hour%20%3D%3D%2024%29%20%7B%20//%20midnight%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20now.hour%20%3D%200%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20return%20now%3B%0A%7D&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false)]
+6. [structs06.c](structs06.c)- [[simulacion](https://pythontutor.com/render.html#code=/*%0ABook%3A%20Programming%20in%20C%0AAuthor%3A%20Stephen%20G.%20Kochan%0A*/%0A%0A//%20Program%20to%20illustrate%20structures%20and%20arrays%0A%0A%23include%20%3Cstdio.h%3E%0A%0Aint%20main%28void%29%0A%7B%0A%20%20%20%20int%20i%3B%0A%20%20%20%20struct%20month%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20int%20numberOfDays%3B%0A%20%20%20%20%20%20%20%20char%20name%5B3%5D%3B%0A%20%20%20%20%7D%3B%0A%0A%20%20%20%20const%20struct%20month%20months%5B12%5D%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B31,%20%7B'J',%20'a',%20'n'%7D%7D,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B28,%20%7B'F',%20'e',%20'b'%7D%7D,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B31,%20%7B'M',%20'a',%20'r'%7D%7D,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B30,%20%7B'A',%20'p',%20'r'%7D%7D,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B31,%20%7B'M',%20'a',%20'y'%7D%7D,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B30,%20%7B'J',%20'u',%20'n'%7D%7D,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B31,%20%7B'J',%20'u',%20'l'%7D%7D,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B31,%20%7B'A',%20'u',%20'g'%7D%7D,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B30,%20%7B'S',%20'e',%20'p'%7D%7D,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B31,%20%7B'O',%20'c',%20't'%7D%7D,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B30,%20%7B'N',%20'o',%20'v'%7D%7D,%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7B31,%20%7B'D',%20'e',%20'c'%7D%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%3B%0A%0A%20%20%20%20printf%28%22Month%20Number%20of%20Days%5Cn%22%29%3B%0A%20%20%20%20printf%28%22-----%20--------------%5Cn%22%29%3B%0A%0A%20%20%20%20for%20%28i%20%3D%200%3B%20i%20%3C%2012%3B%20%2B%2Bi%29%20%7B%0A%20%20%20%20%20%20%20%20printf%28%22%20%25c%25c%25c%20%25i%5Cn%22,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20months%5Bi%5D.name%5B0%5D,%20months%5Bi%5D.name%5B1%5D,%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20months%5Bi%5D.name%5B2%5D,%20months%5Bi%5D.numberOfDays%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20return%200%3B%0A%7D&cumulative=false&curInstr=0&heapPrimitives=nevernest&mode=display&origin=opt-frontend.js&py=c_gcc9.3.0&rawInputLstJSON=%5B%5D&textReferences=false)]
+7. [structs07.c](structs07.c)
+8. [structs08.c](structs08.c)
+9. [structs09.c](structs09.c)
+
+
+## 5. Referencias teoricas
 
 A continuación se muestran algunos apuntes de clase que ilustran algunos conceptos teoricos necesarios para comprender la lista de ejemplos adjuntos:
 
-* **Estructuras** [[link]](https://udea-so.github.io/intro-c/content/CH_02-S04.html)
-* **Structs** [[link]](https://diveintosystems.org/book/C2-C_depth/structs.html)
+* Material del curso sobre **Estructuras** [[link]](https://udea-so.github.io/intro-c/content/CH_02-S04.html)
+* Capitulo **Structs** del texto online Dive into Systems
+  [[link]](https://diveintosystems.org/book/C2-C_depth/structs.html)
 
-## Enlaces
+## 6. Enlaces
 
 * https://www.educative.io/blog/advanced-c-programming-concepts-for-developers
 * https://github.com/Apress/adv-topics-in-c
+
+> [!Note]
+> **AI Disclosure:** This document was created with the assistance of Artificial Intelligence language models. The content has been reviewed, edited, and validated by a human author to ensure accuracy and quality.
+
+[⬆️ Subir un nivel](../)
