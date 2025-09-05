@@ -15,7 +15,7 @@ En el siguiente laboratorio se verán las herramientas necesarias para el desarr
 |1|Herramientas necesarias [[link]](sesion-1/sesion1.md)|
 |2|Introducción al lenguaje C [[link]](sesion-2/sesion2.md)|
 
-## Referncias
+## Referencias
 
 1. https://github.com/isLinXu/Stanford-CS-Course/blob/main/README.en.md
 2. https://www.mit.edu/~amidi/teaching/data-science-tools/
