@@ -1,13 +1,13 @@
 # Reserva dinamica de memoria
 
 
-## Introducción
+## 1. Introducción
 
 Este documento tiene como objetivo proporcionar una base teórica sobre la gestión de memoria dinámica en el lenguaje de programación C. A diferencia de lenguajes de alto nivel como Java o Python, que emplean mecanismos automáticos de gestión de memoria (e.g., Garbage Collector), C delega esta responsabilidad directamente al programador. La gestión manual de memoria es una característica fundamental del lenguaje que permite un control granular sobre los recursos del sistema, posibilitando la creación de aplicaciones de alto rendimiento y estructuras de datos de tamaño variable, cuyo dimensionamiento no se conoce en tiempo de compilación.
 
-## Conceptos importantes
+## 2. Conceptos importantes
 
-### Mapa de memoria
+### 2.1. Mapa de memoria
 
 
 El **mapa de memoria** es una representación que muestra cómo está organizada y distribuida la memoria. En la siguiente figura se muestra el mapa de memoria asociado al espacio de direcciones (memoria virtual) de un proceso:
@@ -28,7 +28,7 @@ Comprender el mapa de memoria en C es fundamental, dado que la administración d
 
 Adicionalmente, el conocimiento de la ubicación y naturaleza de cada región favorece decisiones de eficiencia (mejor localidad de caché, reducción de fragmentación y de llamadas innecesarias a asignadores) y una depuración más rigurosa al correlacionar errores con su origen. En suma, el mapa de memoria proporciona el marco conceptual para asignar, utilizar y liberar recursos de forma correcta, segura y performante, condición indispensable para el desarrollo de software de sistemas en C.
 
-### Manejo de memoria en C
+### 2.2. Manejo de memoria en C
 
 En Java/Python existe recolección de basura (GC); en C al ser el programador quien administra la memoria. Este tiene que tener en cuenta dos responsabilidades clave:
 * **Reservar explícitamente** (p. ej., malloc, calloc) y liberar (free).
@@ -54,7 +54,7 @@ Además de las funciones para asignar y liberar memoria, se emplean otras funcio
 |`memmove`|`void* memmove(void* dest, const void* src, size_t num);`|Mover `num` bytes de `src` a `dest` de forma segura.|La versión segura de `memcpy`. Funciona correctamente incluso si las zonas de memoria se solapan, aunque puede ser ligeramente más lenta|
 |`memcmp`|`int memcmp(const void* ptr1, const void* ptr2, size_t num);`|Comparar los primeros num bytes de dos bloques de memoria.|Devuelve 0 si son idénticos, <0 si el primero es menor, o >0 si el primero es mayor.|
 
-### Buenas practicas
+### 2.3. Buenas practicas
 
 A continuación se muestra una lista de buenas prácticas para el manejo de memoria dinámica en C:
 
@@ -147,7 +147,7 @@ A continuación se muestra una lista de buenas prácticas para el manejo de memo
    destroy_object(my_obj);
    ```
 
-## Actividad
+## 3. Actividad
 
 Descargue el archivo [dynamic_mem_examples.zip](dynamic_mem_examples.zip), descomprimalo e ingrese al directorio resultante:
 
@@ -175,7 +175,7 @@ Para ejecutar los ejemplos use el nombre del archivo resultante al compilar sin 
 ./ejemplo
 ```
 
-## Ejemplos
+## 5. Ejemplos
 
 Analice y ejecute la siguiente lista de ejemplos:
 
@@ -851,3 +851,7 @@ A continuación se muestran algunos apuntes de clase que ilustran algunos concep
 * https://skills.microchip.com/fundamentals-of-the-c-programming-language-part-ii
 * https://skills.microchip.com/fundamentals-of-the-c-programming-language-part-iii
 
+> [!Note]
+> **AI Disclosure:** This document was created with the assistance of Artificial Intelligence language models. The content has been reviewed, edited, and validated by a human author to ensure accuracy and quality.
+
+[⬆️ Subir un nivel](../)
