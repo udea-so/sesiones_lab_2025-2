@@ -33,6 +33,7 @@ Repositorio con material de las sesiones de laboratorio del semestre 2025/1
 |0 | Presentación del laboratorio [[link]](./lab1/sesion-0/)|
 |1 | Primeros pasos: Herramientas de desarrollo [[link]](./lab1/sesion-1/)|
 |2 | Lenguaje C (parte 1) [[link]](./lab1/sesion-2/)|
+|3 | Lenguaje C (parte 2) [[link]](./lab1/sesion-2/)|
 
 #### Enunciado de la practica
 
