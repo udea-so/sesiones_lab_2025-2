@@ -10,9 +10,9 @@ En el siguiente laboratorio se verán las herramientas necesarias para el desarr
 
 |Sesión|Tema|
 |---|---|
-|0|Presentación del laboratorio [[link]](sesion-0/presentacion-laboratorio.md)|
-|1|Herramientas necesarias [[link]](sesion-1/sesion1.md)|
-|2|Introducción al lenguaje C [[link]](sesion-2/sesion2.md)|
+|0|Presentación del laboratorio [[link]](sesion-0/README.md)|
+|1|Herramientas necesarias [[link]](sesion-1/README.md)|
+|2|Introducción al lenguaje C [[link]](sesion-2/README.md)|
 
 ## Referencias
 
