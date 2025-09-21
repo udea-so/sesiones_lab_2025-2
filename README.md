@@ -41,7 +41,13 @@ El enunciado de la practica 1 se encuentra en el siguiente [link](https://github
 
 ### Laboratorio 2 - Gestion de de procesos
 
-To Do...
+|Sesión|Contenido|
+|---|---|
+|4 | En construccion... |
+
+#### Enunciado de la practica
+
+El enunciado de la practica 1 se encuentra en el siguiente [link](https://github.com/udea-so/SO-Lab2-20241)
 
 ### Laboratorio 3 - Manejo de hilos
 
