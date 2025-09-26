@@ -43,7 +43,7 @@ El enunciado de la practica 1 se encuentra en el siguiente [link](https://github
 
 |Sesión|Contenido|
 |---|---|
-|4 | En construccion... |
+|4 | API Poxis para manejo de procesos [[link]](./lab2/sesion-3/) |
 
 #### Enunciado de la practica
 
