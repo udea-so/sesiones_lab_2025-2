@@ -46,3 +46,6 @@ En esta pagina tambien hay algunos pdfs con diapositivas que les puede ayudar a 
 
 Finalmente, si desean profundizar mas sobre el tema puede consultar el material que se encuentra en las referencias ([link](../../referencias/))
 
+
+> [!Note]
+> **AI Disclosure:** This document was created with the assistance of Artificial Intelligence language models. The content has been reviewed, edited, and validated by a human author to ensure accuracy and quality.
