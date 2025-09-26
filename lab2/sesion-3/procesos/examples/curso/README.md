@@ -1,4 +1,4 @@
-# Ejemplos - Parte 1
+# Ejemplos 1
 
 ## Introducción
 
