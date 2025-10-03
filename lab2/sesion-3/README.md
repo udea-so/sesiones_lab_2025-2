@@ -12,7 +12,7 @@ Los contenidos a abordar en esta sesión son:
 
 - [x] Conceptos basicos antes de empezar la practica [[link]](./procesos/)
 - [x] Ejemplos claves para la practica [[link]](./procesos/examples/clave/)
-- [ ] Conceptos de C a tener en cuenta: estructuras, apuntadores, reserva dinamica de memoria.
+- [ ] Conceptos de C a tener en cuenta: estructuras ([link](../../lab1/sesion-2/ejemplos_c/conceptos_c/estructuras/)), apuntadores ([link](../../lab1/sesion-2/ejemplos_c/conceptos_c/punteros/)), reserva dinamica de memoria ([link](../../lab1/sesion-2/ejemplos_c/conceptos_c/reserva_dinamica_memoria/)), atchivos ([link](../../lab1/sesion-2/ejemplos_c/conceptos_c/archivos/)). Todo lo anterior se encuentra mejor explicado en el curso **CS50 (Computer Science 50)** de la Universidad de Harvard [[link]](https://cs50.harvard.edu/summer/2025/)
 - [ ] Sobre la practica [[link]](../README.md)
 
 ## Recursos disponibles
