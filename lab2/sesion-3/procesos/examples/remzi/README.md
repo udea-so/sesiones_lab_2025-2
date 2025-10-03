@@ -11,6 +11,9 @@ A continuación se describen brevemente los programas incluidos:
 
 Estos ejemplos son fundamentales para comprender la API de procesos en sistemas operativos tipo Unix y el comportamiento de la creación y sincronización de procesos en C.
 
+> [!TIP]
+> En el siguiente [link](./slides/05.Interlude_process_api.pdf) se encuentran unas diapositivas que resumen el capitulo **Interlude: Process API** del libro de Remzi. Apoyese en estas para comprender los ejemplos.
+
 ## Compilación y ejecución
 
 Para compilar cualquiera de los ejemplos, utiliza el siguiente comando en la terminal:

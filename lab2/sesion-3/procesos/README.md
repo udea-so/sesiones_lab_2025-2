@@ -179,6 +179,12 @@ gcc -o proceso_template proceso_template.c
 
 ## 4. Ejemplos
 
+## Ejemplos
+
+Como material de apoyo para el desarrollo de la practica se proporcionan varios ejemplos. Estudielos y comprenda lo que hacen y una vez que tenga claros los conceptos empiece a programar la practica.
+1. **Ejemplos clave**: Estos ejemplos contienen los principales aspectos que se tienen que tener en cuenta para iniciar la practica. [[link]](./examples/clave/)
+2. **Ejemplos del curso**: Una recopilación de ejemplos antiguos para comprender algunas funciones del API de procesos de Posix. [[link]](./examples/curso/)
+3. **Ejemplo del libro de Remzi**: Ejemplos del capitulo **Interlude: Process API** del libro de Remzi. [[link]](./examples/remzi/)
 
 
 
