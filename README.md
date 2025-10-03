@@ -57,6 +57,15 @@ To Do...
 
 To Do...
 
-### Ejemplos por encuentro
+### Referencias
 
 * https://web.stanford.edu/class/archive/cs/cs107/cs107.1258/
+* https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/
+* https://cs0330-fall2024.github.io/
+* https://cs.wellesley.edu/~cs240/s25/
+* https://cs.wellesley.edu/~cs240/f25/lab/
+* https://oslab.kaist.ac.kr/
+* https://oslab.kaist.ac.kr/courseware/
+* https://oslab.kaist.ac.kr/ee415_2025_fall/
+* https://student.cs.uwaterloo.ca/~cs350/F24/reading.shtml
+

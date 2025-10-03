@@ -30,9 +30,7 @@ En esta pagina tambien hay algunos [pdfs](./pdfs/) con diapositivas que les pued
 
 Finalmente, si desean profundizar mas sobre el tema puede consultar el material que se encuentra en las referencias ([link](../../referencias/))
 
-* https://brennan.io/2015/01/16/write-a-shell-in-c/
-* https://dev.to/hussein_hazimeh_1e1bddf94/simple-shell-in-c-3l3i
-
+<!--
 ## Referencias adicionales
 
 * https://www.cs.purdue.edu/homes/grr/SystemsProgrammingBook/
@@ -46,6 +44,9 @@ Finalmente, si desean profundizar mas sobre el tema puede consultar el material 
 * https://oslab.kaist.ac.kr/courseware/
 * https://oslab.kaist.ac.kr/ee415_2025_fall/
 * https://student.cs.uwaterloo.ca/~cs350/F24/reading.shtml
+
+-->
+
 
 > [!Note]
 > **AI Disclosure:** This document was created with the assistance of Artificial Intelligence language models. The content has been reviewed, edited, and validated by a human author to ensure accuracy and quality.
