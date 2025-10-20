@@ -12,7 +12,7 @@
 
 * Que pasa si una aplicacion usa un numero diferente de hilos a los que tiene la maquina.
 
-
+# Enunciado
 
 An interesting way of calculating π is to use a technique known as Monte Carlo, which involves randomization. This technique works as follows: Suppose you have a circle inscribed within a square, as shown in Figure 4.25. (Assume that the radius of this circle is 1.)
 

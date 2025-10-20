@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 /*
 To compute the sum of the integers from 1 to n using a separate thread.
 
