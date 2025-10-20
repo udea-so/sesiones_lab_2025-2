@@ -51,7 +51,10 @@ El enunciado de la practica 2 se encuentra en el siguiente [link](https://github
 
 ### Laboratorio 3 - Manejo de hilos
 
-To Do...
+|Sesión|Contenido|
+|---|---|
+|5 | API Posix para manejo de threads [[link]](./lab3/sesion-4/) |
+
 
 ### Laboratorio 4 - Persistencia e I/O
 
