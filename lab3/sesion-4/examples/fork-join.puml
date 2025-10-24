@@ -1,0 +1,56 @@
+@startuml
+title Patrón Fork-Join (Diagrama de Secuencia con Pthreads)
+skinparam handwritten true
+
+participant "Hilo Principal" as Main
+participant "Hilo 1" as T1
+participant "Hilo 2" as T2
+participant "..." as TN
+
+activate Main
+Main -> Main: Trabajo serial previo
+
+== Fase Fork (Creación) ==
+Main ->> T1: pthread_create(&t1, ...)
+activate T1
+note right of T1: Hilo 1 inicia ejecución
+
+Main ->> T2: pthread_create(&t2, ...)
+activate T2
+note right of T2: Hilo 2 inicia ejecución
+
+Main ->> TN: pthread_create(&tN, ...)
+activate TN
+note right of TN: Hilo N inicia ejecución
+
+note left of Main: Hilos ejecutan en paralelo
+
+T1 -> T1: Ejecuta Tarea 1
+T2 -> T2: Ejecuta Tarea 2
+TN -> TN: Ejecuta Tarea N
+
+T1 ->> Main: (pthread_exit)
+deactivate T1
+
+T2 ->> Main: (pthread_exit)
+deactivate T2
+
+TN ->> Main: (pthread_exit)
+deactivate TN
+
+== Fase Join (Sincronización) ==
+note left of Main: Hilo principal espera (bloquea) \npor cada hilo hijo.
+
+Main ->> T1: pthread_join(t1, ...)
+note right of T1: Recolecta Hilo 1
+
+Main ->> T2: pthread_join(t2, ...)
+note right of T2: Recolecta Hilo 2
+
+Main ->> TN: pthread_join(tN, ...)
+note right of TN: Recolecta Hilo N
+
+Main -> Main: Trabajo serial posterior \n(Agregación de resultados)
+deactivate Main
+
+@enduml

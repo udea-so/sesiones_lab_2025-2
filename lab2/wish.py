@@ -13,9 +13,36 @@ import sys
 internal_commands = ["exit", "cd", "path"]
 path = ["/bin", "/usr/bin", "."]
 command_exist = False
+flag_background = False
 
 def execute_command(command_list):
     global command_exist
+    global flag_background
+
+    # Handle case where '&' is attached to the last command
+    if command_list[-1] != "&" and command_list[-1].endswith("&"):
+        token = command_list[-1][:-1]
+        if token:  # si no era solo '&'
+            command_list[-1] = token
+            command_list.append("&")
+        else:
+            command_list[-1] = "&"
+
+    # Check for background execution
+    if command_list and command_list[-1] == "&":
+        flag_background = True
+        command_list = command_list[:-1]  # Remove '&' from command list
+    else:
+        flag_background = False
+
+    # Empty command do nothing
+    if not command_list:
+        return
+
+    # Reset command_exist for each new command
+    command_exist = False
+    
+    # Run internal or external commands       
     if command_list[0] in internal_commands:
         # Internal commands: exit, cd, path
         if command_list[0] == "exit":
@@ -45,14 +72,17 @@ def execute_command(command_list):
         if command_exist == False:
             print(f"{command_list[0]}: Command not found")
         else:
-            # Fork and execute the command  
+            # Fork and execute the command              
             pid = os.fork()                              
             if pid == 0:
                 # Child process
+                print(f"Executing command: {command_list}")
                 os.execvp(command_list[0], command_list)            
             else:
                 # Parent process
-                os.wait()
+                if not flag_background:
+                    # Wait for the child process to finish
+                    os.wait()
         
 def main():
     if len(sys.argv) > 2:
