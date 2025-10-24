@@ -39,27 +39,9 @@ Aunque a menudo se usan indistintamente, estos conceptos son distintos:
 * **Concurrencia (Concurrency):** Se refiere a la capacidad de gestionar múltiples tareas *aparentemente* al mismo tiempo. En un sistema de un solo núcleo, el SO intercala la ejecución de los hilos (conmutación de contexto) para dar la ilusión de simultaneidad. El objetivo es gestionar recursos compartidos.
 * **Paralelismo (Parallelism):** Se refiere a la ejecución *realmente* simultánea de múltiples tareas. Esto solo es posible en sistemas con múltiples núcleos de procesamiento. El objetivo es acelerar un cómputo dividiendo el trabajo.
 
-
-```plantuml
-@startuml
-title Concurrencia vs Paralelismo
-
-skinparam monochrome true
-participant "Tarea A" as A
-participant "Tarea B" as B
-
-== Concurrencia ==
-A -> A: Ejecuta parte de A
-A -> B: Conmutación de contexto
-B -> B: Ejecuta parte de B
-B -> A: Conmutación de contexto
-A -> A: Continúa A
-
-== Paralelismo ==
-A -[#green]-> A: Ejecuta A en CPU 1
-B -[#blue]-> B: Ejecuta B en CPU 2
-@enduml
-```
+<p align="center">
+  <img src="concurrencia_vs_paralelismo.png" alt="Concurrencia-vs-Paralelismo" width="500">
+</p>
 
 
 ### 1.4. El Problema: Condiciones de Carrera (*Race Conditions*)
@@ -151,6 +133,13 @@ La biblioteca proporciona funciones para manejar el ciclo de vida de un hilo.
     void pthread_exit(void *retval);
     ```
 
+La siguiente figura muestra el patron **fork-join** usado cuando se emplean hilos:
+
+<p align="center">
+  <img src="fork_join2.png" alt="fork-join" width="500">
+</p>
+
+
 ### 2.2. Sincronización: Exclusión Mutua (Mutex)
 
 Como se demostró en el problema de la **Condición de Carrera** (sección 1.4), necesitamos un mecanismo para proteger la sección crítica (`count += 1`) y asegurar que solo un hilo pueda ejecutarla a la vez.
@@ -207,23 +196,10 @@ void *counting(void *end_value) {
 }   
 ```
 
-```plantuml
-@startuml
-title Exclusión Mutua con Mutex
+<p align="center">
+  <img src="mutual_exclusion.png" alt="exclusion-mutua" width="500">
+</p>
 
-actor "Hilo 1"
-actor "Hilo 2"
-participant "Recurso Compartido"
-
-"Hilo 1" -> "Recurso Compartido": pthread_mutex_lock()
-"Hilo 1" -> "Recurso Compartido": count += 1
-"Hilo 1" -> "Recurso Compartido": pthread_mutex_unlock()
-
-"Hilo 2" -> "Recurso Compartido": pthread_mutex_lock()
-"Hilo 2" -> "Recurso Compartido": count += 1
-"Hilo 2" -> "Recurso Compartido": pthread_mutex_unlock()
-@enduml
-```
 
 ---
 
