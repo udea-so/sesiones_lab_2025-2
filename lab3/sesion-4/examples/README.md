@@ -205,53 +205,19 @@ void *counting(void *end_value) {
 
 ## 3. Casos de Estudio y Ejemplos
 
+En los archivos de código proporcionados a continuación se aplican los conceptos previamente vistos.
 
-Los archivos de código proporcionados ilustran estos conceptos.
-
-### 3.1. Ejemplo 1: Creación y Espera (`example1.c`)
-
-* **Objetivo:** Demostrar el ciclo de vida básico de un hilo.
-* **Descripción:** El hilo `main` crea un único hilo `runner`. El hilo `runner` calcula la suma de 1 a N (pasado como argumento) y la almacena en la variable global `sum`.
-* **Punto Clave:** El `main` debe ejecutar `pthread_join()` para esperar a que `runner` termine su cálculo antes de imprimir el resultado final. Si `main` no esperara, podría imprimir `sum` antes de que el cálculo haya finalizado (probablemente imprimiría 0).
-
-### 3.2. Ejemplo 2 (Fallido): Condición de Carrera (`example2_rc.c`)
-
-* **Objetivo:** Demostrar el peligro de las condiciones de carrera.
-* **Descripción:** Se crean múltiples hilos. Cada hilo ejecuta la función `counting`, que incrementa la variable global `count` un total de `n` veces.
-* **Resultado Esperado:** `count` debería ser `num_hilos * n`.
-* **Resultado Real:** `count` es casi siempre *menor* que el valor esperado.
-* **Análisis:** Como se explicó en la sección 1.4, la operación `count += 1` no es atómica. Múltiples hilos leen el mismo valor de `count` *antes* de que los otros hayan escrito su incremento, llevando a "actualizaciones perdidas". Este programa demuestra un error de concurrencia clásico.
-
-### 3.3. Ejemplo 2 (Corregido): Uso de Mutex (`example2.c`)
-
-* **Objetivo:** Solucionar la condición de carrera de `example2_rc.c` usando exclusión mutua.
-* **Descripción:** El código es idéntico a `example2_rc.c`, pero introduce un `pthread_mutex_t` y lo inicializa/destruye.
-* **Solución:** La función `counting` ahora "envuelve" la sección crítica (`count += 1`) con un `lock` y un `unlock`:
-    ```c
-    pthread_mutex_lock(&mutex); // Initialize lock
-    // ---------- Start Critical section ----------
-    count += 1;
-    // ---------- End Critical section ----------
-    pthread_mutex_unlock(&mutex); // Release lock
-    ```
-* **Resultado:** El programa ahora siempre produce el resultado esperado (`num_hilos * n`).
-* **Contrapartida:** La sincronización tiene un costo. Esta versión es más lenta que la versión con condición de carrera (y más lenta que una versión serial), porque los hilos deben esperar en fila (serializarse) para acceder a la sección crítica. El objetivo aquí no es la velocidad, sino la **correctitud**.
-
-### 3.4. Ejemplo 3: Paralelismo (`suma_s.c` vs `suma_p.c`)
-
-* **Objetivo:** Demostrar cómo el paralelismo puede acelerar un cómputo divisible.
-* **`suma_s.c` (Serial):** Calcula la suma de dos vectores (`v1` y `v2`) de gran tamaño (`TAMANO`) usando un único bucle `for`. Sirve como nuestra línea base (Benchmark) midiendo el tiempo de ejecución.
-* **`suma_p.c` (Paralelo):**
-    * **Estrategia:** Divide el trabajo. Utiliza el número de procesadores disponibles (`sysconf(_SC_NPROCESSORS_ONLN)`) para definir el número de hilos.
-    * **Implementación:** La función `sumar_porcion_vector` recibe una estructura `thread_args_t` que le indica su `id` y el número total de hilos. Con esto, calcula qué "trozo" del vector le corresponde sumar (desde `inicio` hasta `fin`).
-    * **Sincronización:** Note que en este caso **no se necesita mutex**. ¿Por qué? Porque los hilos no comparten datos *mutables*. Cada hilo escribe en una porción *diferente* del `vectorSuma` (`data->vectorSuma[i] = ...`). No hay superposición de escritura, por lo tanto, no hay condición de carrera.
-    * **Resultado:** `suma_p.c` (que también mide su tiempo de ejecución) debería ejecutarse significativamente más rápido que `suma_s.c` en una máquina con múltiples núcleos, demostrando el poder del paralelismo.
-
+|Ejemplos|Archivos|Descripción breve|
+|---|---|---|
+|Parte 1 [[link]](parte1/)|[example1.c](parte1/example1.c)|Ejemplo del patron **fork-join**|
+|                         |[example2_rc.c](parte1/example2_rc.c)|Demostración del problema de condición de carrera|
+|                         |[example2.c](parte1/example2.c)|Solución al problema de condición de carrera mediante exclusión mutua|
+|Parte 2 [[link]](parte2/)|[suma_s.c](parte2/suma_s.c),[suma_p.c](parte2/suma_p.c)|Demostración del uso de paralelismo para acelerar una operacion de computo|
 
 ## Referencias
 
+* https://hpc.llnl.gov/documentation/tutorials
 * https://notes.shichao.io/apue/ch11/#chapter-11-threads
-
-
+  
 > [!Note]
 > **AI Disclosure:** This document was created with the assistance of Artificial Intelligence language models. The content has been reviewed, edited, and validated by a human author to ensure accuracy and quality.
