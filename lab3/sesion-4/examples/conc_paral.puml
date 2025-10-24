@@ -1,0 +1,19 @@
+@startuml
+title Concurrencia vs Paralelismo
+skinparam handwritten true
+
+
+participant "Tarea A" as A
+participant "Tarea B" as B
+
+== Concurrencia ==
+A -> A: Ejecuta parte de A
+A -> B: Conmutación de contexto
+B -> B: Ejecuta parte de B
+B -> A: Conmutación de contexto
+A -> A: Continúa A
+
+== Paralelismo ==
+A -[#green]-> A: Ejecuta A en CPU 1
+B -[#blue]-> B: Ejecuta B en CPU 2
+@enduml

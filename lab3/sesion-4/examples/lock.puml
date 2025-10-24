@@ -1,0 +1,16 @@
+@startuml
+title Exclusión Mutua con Mutex
+skinparam handwritten true
+
+actor "Hilo 1"
+actor "Hilo 2"
+participant "Recurso Compartido"
+
+"Hilo 1" -> "Recurso Compartido": pthread_mutex_lock()
+"Hilo 1" -> "Recurso Compartido": count += 1
+"Hilo 1" -> "Recurso Compartido": pthread_mutex_unlock()
+
+"Hilo 2" -> "Recurso Compartido": pthread_mutex_lock()
+"Hilo 2" -> "Recurso Compartido": count += 1
+"Hilo 2" -> "Recurso Compartido": pthread_mutex_unlock()
+@enduml

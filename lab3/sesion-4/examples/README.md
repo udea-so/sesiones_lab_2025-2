@@ -8,24 +8,30 @@ Antes de escribir código, es crucial comprender el modelo de hilos y los desaf�
 
 ### 1.1. ¿Qué es un Hilo (Thread)?
 
-Un **hilo** (o *thread*) es la unidad de ejecución más pequeña que puede ser gestionada por un sistema operativo. Un proceso tradicional consta de al menos un hilo (el "hilo principal").
+Un **hilo** (*thread*) es la unidad de ejecución más pequeña que puede ser gestionada por un sistema operativo. Un proceso tradicional consta de al menos un hilo (el *hilo principal*).
 
-La diferencia clave entre un **proceso** y un **hilo** es la gestión de la memoria:
-* **Procesos:** Tienen espacios de memoria completamente separados. La comunicación entre procesos (IPC) es costosa y debe ser explícita (p. ej., *pipes*, *sockets*, memoria compartida).
-* **Hilos:** Múltiples hilos *dentro de un mismo proceso* comparten el mismo espacio de memoria.
+La diferencia clave entre un **proceso** y un **hilo** radica en cómo se maneja la memoria:
+
+| Característica | Proceso | Hilo |
+|:----------------|:--------|:-----|
+| Espacio de memoria | Independiente | Compartido con otros hilos del mismo proceso |
+| Comunicación | Explícita (pipes, sockets, etc.) | Implícita (variables globales, heap) |
+| Costo de creación | Alto | Bajo |
+| Aislamiento de fallos | Alto | Bajo |
 
 ### 1.2. El Modelo de Memoria Compartida
 
-Este es el pilar de la programación con hilos. Todos los hilos dentro de un proceso comparten:
-* El segmento de código (las instrucciones del programa).
-* El segmento de datos (variables globales y estáticas).
-* El *heap* (memoria asignada dinámicamente, p. ej., con `malloc`).
+Este es el pilar de la programación con hilos.  
+Todos los hilos dentro de un proceso comparten:
 
-Sin embargo, cada hilo tiene su **propia pila** (*stack*). Esto significa que las variables locales de una función son privadas para el hilo que está ejecutando esa función.
+* El **segmento de código** (instrucciones del programa).
+* El **segmento de datos** (variables globales y estáticas).
+* El **heap** (memoria dinámica, p. ej., `malloc`).
 
-**Ventaja:** La comunicación es implícita y rápida. Si un hilo escribe en una variable global, todos los demás hilos ven el cambio instantáneamente.
+Sin embargo, cada hilo tiene su **propia pila** (*stack*), lo que significa que las variables locales de una función son privadas para ese hilo.
 
-**Desventaja:** Este modelo introduce nuevos y complejos tipos de errores, principalmente las **condiciones de carrera**.
+**Ventaja:** la comunicación entre hilos es implícita y rápida.  
+**Desventaja:** aparecen errores complejos como las **condiciones de carrera**.
 
 ### 1.3. Concurrencia vs. Paralelismo
 
@@ -34,18 +40,39 @@ Aunque a menudo se usan indistintamente, estos conceptos son distintos:
 * **Paralelismo (Parallelism):** Se refiere a la ejecución *realmente* simultánea de múltiples tareas. Esto solo es posible en sistemas con múltiples núcleos de procesamiento. El objetivo es acelerar un cómputo dividiendo el trabajo.
 
 
-### 1.4. El Problema: Condiciones de Carrera (Race Conditions)
+```plantuml
+@startuml
+title Concurrencia vs Paralelismo
 
-En programas concurrentes, varios hilos pueden intentar modificar simultáneamente un mismo recurso.
-Cuando esto ocurre sin una adecuada sincronización, se pueden producir resultados inconsistentes.
+skinparam monochrome true
+participant "Tarea A" as A
+participant "Tarea B" as B
 
-Una condición de carrera ocurre cuando el resultado de un cómputo depende del orden impredecible en que los hilos completan sus operaciones sobre un recurso compartido.
-Este tipo de error no se debe a una falla en la lógica del programa, sino al entrelazamiento no controlado de las instrucciones de distintos hilos durante la ejecución.
+== Concurrencia ==
+A -> A: Ejecuta parte de A
+A -> B: Conmutación de contexto
+B -> B: Ejecuta parte de B
+B -> A: Conmutación de contexto
+A -> A: Continúa A
 
-Para ilustrar este problema, observe la siguiente función:
+== Paralelismo ==
+A -[#green]-> A: Ejecuta A en CPU 1
+B -[#blue]-> B: Ejecuta B en CPU 2
+@enduml
+```
+
+
+### 1.4. El Problema: Condiciones de Carrera (*Race Conditions*)
+
+En programas concurrentes, varios hilos pueden intentar modificar simultáneamente un mismo recurso. Cuando esto ocurre sin una adecuada sincronización, se pueden producir resultados inconsistentes.
+
+Una **condición de carrera** ocurre cuando el resultado del programa depende del orden impredecible en que los hilos completan sus operaciones sobre un recurso compartido.  
+Este error no se debe a una falla en la lógica, sino al **entrelazamiento no controlado** de las instrucciones.
+
+#### Ejemplo
 
 ```c
-/* The thread will execute in this function */
+/* Each thread executes this function */
 void *counting(void *end_value) {
     int i = 0;
     int upper = *((int *)end_value);    
@@ -58,36 +85,33 @@ void *counting(void *end_value) {
 }   
 ```
 
-El problema fundamental es que una operación aparentemente simple, como `count += 1`, no es atómica. A nivel de máquina, esta instrucción se descompone en tres etapas:
-1. **Lectura**: el valor actual de count se copia desde la memoria principal a un registro del procesador.
-2. **Modificación**: el registro incrementa su valor localmente.
-3. **Escritura**: el nuevo valor se almacena nuevamente en la dirección de memoria asociada a count.
+La operación `count += 1` **no es atómica**. A nivel de máquina, se descompone en tres etapas:
 
-Estas tres etapas pueden intercalarse con las operaciones de otros hilos, produciendo resultados inconsistentes. El siguiente fragmento de código en ensamblador muestra esta secuencia:
+1. **Lectura:** el valor actual de `count` se copia desde memoria a un registro.
+2. **Modificación:** el registro incrementa su valor localmente.
+3. **Escritura:** el nuevo valor se almacena nuevamente en memoria.
 
-```x86asm
+```asm
 mov 0x8049a1c, %eax   ; cargar count en EAX
 add $0x1, %eax        ; incrementar el registro
 mov %eax, 0x8049a1c   ; guardar nuevo valor en memoria
 ```
 
-Imagine dos hilos (H1 y H2) ejecutando `count += 1` cuando `count` vale 5:
+#### Intercalación de instrucciones (una sola CPU)
 
-| Paso | Hilo 1 (instrucción ejecutada) | Hilo 2 (instrucción ejecutada) | PC       | EAX   | `counter`                   |
-| :--: | :----------------------------- | :----------------------------- | :------- | :---- | :-------------------------- |
-|   1  | `mov 0x8049a1c, %eax`          | —                              | `mov` H1 | **5** | 5                           |
-|   2  | —                              | `mov 0x8049a1c, %eax`          | `mov` H2 | **5** | 5                           |
-|   3  | `add $0x1, %eax`               | —                              | `add` H1 | **6** | 5                           |
-|   4  | —                              | `add $0x1, %eax`               | `add` H2 | **6** | 5                           |
-|   5  | `mov %eax, 0x8049a1c`          | —                              | `mov` H1 | **6** | **6**                       |
-|   6  | —                              | `mov %eax, 0x8049a1c`          | `mov` H2 | **6** | 🔴 **6 (valor incorrecto)** |
+| Paso | Hilo 1 | Hilo 2 | PC | EAX | `counter` |
+|:----:|:--------|:--------|:----|:----|:----------|
+| 1 | `mov 0x8049a1c, %eax` | — | `mov` H1 | **5** | 5 |
+| 2 | — | `mov 0x8049a1c, %eax` | `mov` H2 | **5** | 5 |
+| 3 | `add $0x1, %eax` | — | `add` H1 | **6** | 5 |
+| 4 | — | `add $0x1, %eax` | `add` H2 | **6** | 5 |
+| 5 | `mov %eax, 0x8049a1c` | — | `mov` H1 | **6** | **6** |
+| 6 | — | `mov %eax, 0x8049a1c` | `mov` H2 | **6** | 🔴 **6 (valor incorrecto)** |
 
+El valor esperado para `count` era **7**, pero se obtuvo **6**.  
+Esto ocurre porque ambos hilos leyeron el mismo valor inicial antes de escribir, **perdiendo una actualización**.
 
-El valor esperado para `count` era `7`. Sin embargo, debido a la ejecución concurrente sin sincronización, una de las actualizaciones se perdió y el resultado final fue `6`.
-
-Este fenómeno se conoce **como condición de carrera** (**Race condition**). Para resolverlo, debemos garantizar que la sección crítica (count += 1) se ejecute de forma atómica; es decir, que ningún otro hilo pueda interrumpirla.
-
-La solución conceptual es la **exclusión mutua**: solo un hilo puede estar dentro de la sección crítica a la vez. La herramienta estándar de pthreads para implementar esto es el **`mutex`**.
+Para resolverlo, se requiere **exclusión mutua**, garantizando que solo un hilo pueda ejecutar la sección crítica.
 
 ---
 
@@ -137,12 +161,14 @@ Si un hilo intenta adquirir un mutex que ya está "tomado" por otro hilo, el sis
 
 
 * `pthread_mutex_init()`: Inicializa un objeto mutex.
+  
     ```c
     pthread_mutex_t my_mutex;
     pthread_mutex_init(&my_mutex, NULL); // NULL para atributos por defecto
     ```
 
 * `pthread_mutex_lock()`: Adquiere el candado. Si está tomado, el hilo se bloquea.
+  
     ```c
     pthread_mutex_lock(&my_mutex);
     // --- INICIO DE LA SECCIÓN CRÍTICA ---
@@ -150,6 +176,7 @@ Si un hilo intenta adquirir un mutex que ya está "tomado" por otro hilo, el sis
     ```
 
 * `pthread_mutex_unlock()`: Libera el candado, permitiendo que otros hilos bloqueados puedan adquirirlo.
+  
     ```c
     // --- FIN DE LA SECCIÓN CRÍTICA ---
     pthread_mutex_unlock(&my_mutex);
@@ -160,7 +187,9 @@ Si un hilo intenta adquirir un mutex que ya está "tomado" por otro hilo, el sis
     pthread_mutex_destroy(&my_mutex);
     ```
 
-Suponiendo que se tiene un `pthread_mutex_t` llamado `my_mutex` el código que asegura exclusión mutua queda de la siguiente manera:
+#### Ejemplo con exclusión mutua
+
+Retornando a la función previamente analizada(`counting`). Si se tiene un `pthread_mutex_t` llamado `my_mutex` el código que asegura exclusión mutua queda de la siguiente manera:
 
 ```c
 /* The thread will execute in this function */
@@ -168,16 +197,33 @@ void *counting(void *end_value) {
     int i = 0;
     int upper = *((int *)end_value);    
     for (i = 1; i <= upper; i++) {
-        pthread_mutex_lock(&my_mutex);
+        pthread_mutex_lock(&my_mutex); // Lock
         // --- critical section ---
         count += 1;  
         // ------------------------
-        pthread_mutex_unlock(&my_mutex);
+        pthread_mutex_unlock(&my_mutex); // Unlock
     }
     pthread_exit(0);
 }   
 ```
 
+```plantuml
+@startuml
+title Exclusión Mutua con Mutex
+
+actor "Hilo 1"
+actor "Hilo 2"
+participant "Recurso Compartido"
+
+"Hilo 1" -> "Recurso Compartido": pthread_mutex_lock()
+"Hilo 1" -> "Recurso Compartido": count += 1
+"Hilo 1" -> "Recurso Compartido": pthread_mutex_unlock()
+
+"Hilo 2" -> "Recurso Compartido": pthread_mutex_lock()
+"Hilo 2" -> "Recurso Compartido": count += 1
+"Hilo 2" -> "Recurso Compartido": pthread_mutex_unlock()
+@enduml
+```
 
 ---
 
@@ -228,4 +274,3 @@ Los archivos de código proporcionados ilustran estos conceptos.
 ## Referencias
 
 * https://notes.shichao.io/apue/ch11/#chapter-11-threads
-* 
