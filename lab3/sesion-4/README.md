@@ -1,13 +1,10 @@
-# Concurrencia
+# Concurrencia y paralelismo usando `pthread`
 
-### Preguntas
+## Resumen
 
-* Como saber cuantos hilos tiene la maquina
-  
-  Comando `lscpu` y `nproc`
+Esta sección trata los aspectos introductorio sobre concurrencia y paralelismo. Para revisar estos conceptos, siga el siguiente [link](examples/)
 
-  ```
-  lscpu
-  ```
+## Referencias
 
-* Que pasa si una aplicacion usa un numero diferente de hilos a los que tiene la maquina.
+* https://udea-so.github.io/udea-so/docs/laboratorio/tutoriales/hilos/threads
+* https://udea-so.github.io/udea-so/docs/laboratorio/tutoriales/hilos/sincronizacion
