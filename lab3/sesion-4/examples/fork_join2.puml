@@ -1,0 +1,25 @@
+@startuml
+title Patrón Fork–Join (dos hilos)
+skinparam handwritten true
+
+actor "Hilo Principal" as Main
+participant "Hilo 1" as T1
+participant "Hilo 2" as T2
+
+Main -> Main: Inicio de ejecución
+Main -> Main: Crear tareas concurrentes
+
+Main -> T1 ++ : fork() → tarea_1()
+Main -> T2 ++ : fork() → tarea_2()
+
+note over T1, T2
+Ambos hilos ejecutan sus tareas en paralelo\n
+mientras el hilo principal espera su finalización.
+end note
+
+T1 -> Main -- : join()
+T2 -> Main -- : join()
+
+Main -> Main: Combinar resultados (fase join)
+Main -> Main: Continuar ejecución secuencial
+@enduml
