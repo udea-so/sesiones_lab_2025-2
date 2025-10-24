@@ -205,6 +205,7 @@ void *counting(void *end_value) {
 
 ## 3. Casos de Estudio y Ejemplos
 
+
 Los archivos de código proporcionados ilustran estos conceptos.
 
 ### 3.1. Ejemplo 1: Creación y Espera (`example1.c`)
@@ -250,3 +251,7 @@ Los archivos de código proporcionados ilustran estos conceptos.
 ## Referencias
 
 * https://notes.shichao.io/apue/ch11/#chapter-11-threads
+
+
+> [!Note]
+> **AI Disclosure:** This document was created with the assistance of Artificial Intelligence language models. The content has been reviewed, edited, and validated by a human author to ensure accuracy and quality.

@@ -7,6 +7,11 @@
 # include "common.h" // Para GetTime() y Spin()
 
 
+/*
+To compile: gcc -o suma_p suma_p.c -I. -Wall -lpthread
+To run: ./suma_p <size> <num_threads>
+*/
+
 // ======================================================
 // Estructura y función del hilo (sin cambios)
 // ======================================================
@@ -42,39 +47,55 @@ void* sumar_porcion_vector(void* args) {
 // ======================================================
 // Función principal con tus funciones integradas
 // ======================================================
-int main() {
-    const int TAMANO = 1000000;
-    int* v1 = (int*)malloc(TAMANO * sizeof(int));
-    int* v2 = (int*)malloc(TAMANO * sizeof(int));
-    int* resultado = (int*)malloc(TAMANO * sizeof(int));
+int main(int argc, char* argv[]) {
+    // Manejo de argumentos
+    int size = 1000000;  // Default size
+    int num_threads = sysconf(_SC_NPROCESSORS_ONLN);  // Default number of threads
+    if (argc > 3) {
+        printf("Uso: %s <size> <num_threads>\n", argv[0]);
+        return 1;
+    }
+    else if (argc == 3) {
+        // Tamaño y numero de hilos definido por el usuario
+        size = atoi(argv[1]);
+        num_threads = atoi(argv[2]);        
+    }
+    else if (argc == 2)    {
+        // Tamaño definido por el usuario
+        size = atoi(argv[1]);  
+    }  
+    printf("Suma con vectores de tamaño: %d\n", size);
+    printf("Usando %d hilos para la suma.\n", num_threads);
+
+    
+    int* v1 = (int*)malloc(size * sizeof(int));
+    int* v2 = (int*)malloc(size * sizeof(int));
+    int* resultado = (int*)malloc(size * sizeof(int));
 
     if (!v1 || !v2 || !resultado) {
         printf("Error al asignar memoria.\n");
         return 1;
     }
 
-    for (int i = 0; i < TAMANO; i++) {
+    for (int i = 0; i < size; i++) {
         v1[i] = i;
         v2[i] = i * 2;
-    }
+    }    
 
-    const int NUM_HILOS = sysconf(_SC_NPROCESSORS_ONLN);
-    printf("Usando %d hilos para la suma.\n", NUM_HILOS);
-
-    pthread_t hilos[NUM_HILOS];
-    thread_args_t args_hilo[NUM_HILOS];
+    pthread_t hilos[num_threads];
+    thread_args_t args_hilo[num_threads];
 
     // INICIA LA MEDICIÓN DE TIEMPO
     double t_inicio = GetTime();
 
     // Crear los hilos
-    for (int i = 0; i < NUM_HILOS; i++) {
-        args_hilo[i] = (thread_args_t){i, v1, v2, resultado, TAMANO, NUM_HILOS};
+    for (int i = 0; i < num_threads; i++) {
+        args_hilo[i] = (thread_args_t){i, v1, v2, resultado, size, num_threads};
         pthread_create(&hilos[i], NULL, sumar_porcion_vector, (void*)&args_hilo[i]);
     }
 
     // Esperar a que todos los hilos terminen
-    for (int i = 0; i < NUM_HILOS; i++) {
+    for (int i = 0; i < num_threads; i++) {
         pthread_join(hilos[i], NULL);
     }
 

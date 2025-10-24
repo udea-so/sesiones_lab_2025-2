@@ -2,11 +2,31 @@
 #include <stdlib.h> // Necesaria para malloc y free
 #include "common.h" // Para GetTime()
 
-int main() {
-    const int TAMANO = 1000000;
-    int* v1 = (int*)malloc(TAMANO * sizeof(int));
-    int* v2 = (int*)malloc(TAMANO * sizeof(int));
-    int* resultado = (int*)malloc(TAMANO * sizeof(int));
+/*
+To compile: gcc -o suma_s suma_s.c -I. -Wall -lpthread
+To run: ./suma_s <size>
+*/
+
+int main(int argc, char* argv[]) {
+    // Manejo de argumentos
+    int size = 1000000;  // Default size
+    if (argc > 2) {
+        printf("Uso: %s <size>\n", argv[0]);
+        return 1;
+    }
+    else if (argc == 2) {
+        // Tamaño definido por el usuario
+        size = atoi(argv[1]);
+        printf("Suma con vectores de tamaño: %d\n", size);        
+    }
+    else if (argc == 1)    {
+        // Tamaño por defecto
+        printf("Suma con vectores de tamaño: %d\n", size);        
+    }
+    // Asignacion de memoria para los vectores
+    int* v1 = (int*)malloc(size * sizeof(int));
+    int* v2 = (int*)malloc(size * sizeof(int));
+    int* resultado = (int*)malloc(size * sizeof(int));
 
     if (!v1 || !v2 || !resultado) {
         printf("Error al asignar memoria.\n");
@@ -14,7 +34,7 @@ int main() {
     }
 
     // Inicializar vectores (igual que antes)
-    for (int i = 0; i < TAMANO; i++) {
+    for (int i = 0; i < size; i++) {
         v1[i] = i;
         v2[i] = i * 2;
     }
@@ -29,7 +49,7 @@ int main() {
     double t_inicio_serial = GetTime();
 
     // Un único bucle que hace todo el trabajo
-    for (int i = 0; i < TAMANO; i++) {
+    for (int i = 0; i < size; i++) {
         resultado[i] = v1[i] + v2[i];
     }
     
