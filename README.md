@@ -55,6 +55,9 @@ El enunciado de la practica 2 se encuentra en el siguiente [link](https://github
 |---|---|
 |5 | API Posix para manejo de threads [[link]](./lab3/sesion-4/) |
 
+#### Enunciado de la practica
+
+El enunciado de la practica 2 se encuentra en el siguiente [link](https://github.com/udea-so/SO-Lab3-20252)
 
 ### Laboratorio 4 - Persistencia e I/O
 
