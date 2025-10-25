@@ -122,7 +122,7 @@ Responda a las siguientes preguntas basándote en la tabla y gráficos:
 
 ## 6. Resultados del Aprendizaje
 
-Al final de este laboratorio aprendiste a:
+Al final de este laboratorio usted aprendio a:
 * Comparar el rendimiento de una implementación serial (`suma_s.c`) frente a una implementación paralela (`suma_p.c`) que utiliza `Pthreads`.
 * Establecer un tiempo base de referencia ($T_s$) midiendo la ejecución del código serial.
 * Medir el tiempo de ejecución paralelo ($T_p$) para un número variable de hilos ($N$), utilizando herramientas de precisión como `GetTime()`.
