@@ -19,17 +19,18 @@ En este laboratorio, analizaremos un problema "vergonzosamente paralelo" (la sum
 
 Con esto, calcularemos dos métricas:
 * **Speedup (Aceleración)**: Mide cuánto más rápida es la versión paralela.
-  $$
-  Speedup(N) = \frac{T_s}{T_p(N)}
-  $$
+  
+$$
+Speedup(N) = \frac{T_s}{T_p(N)}
+$$
   
   Un Speedup "ideal" sería $N$ (si usamos $N$ hilos, tarda $1/N$ del tiempo).
 
 * **Eficiencia**: Mide qué tan bien estamos utilizando los recursos (núcleos).
   
-  $$
-  Eficiencia(N) = \frac{Speedup(N)}{N}
-  $$
+$$
+Eficiencia(N) = \frac{Speedup(N)}{N}
+$$
   
   Una eficiencia ideal es 1 (o 100%).
 
